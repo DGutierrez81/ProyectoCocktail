@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -20,7 +21,7 @@ import androidx.navigation.NavController
 import com.example.proyectococktail.Cocktails.Model.Routes
 
 @Composable
-fun principalScreen(navController: NavController, loginVM: Viewmodel){
+fun Screen2(navController: NavController, loginVM: Viewmodel){
     // DCS - Estructura de la interfaz de inicio de sesión con campos de texto y botón de entrada.
 
     Column(
@@ -28,14 +29,19 @@ fun principalScreen(navController: NavController, loginVM: Viewmodel){
         modifier = Modifier.fillMaxSize()
     ) {
 
-        Button(onClick = {navController.navigate(Routes.screen2.Route)}) {
-            Text(text = "Formulario")
-        }
+        OutlinedTextField(
+            value = loginVM.userName,
+            onValueChange = { loginVM.changeUserName(it) },
+            label = { Text(text = "Username") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp),
+            shape = RoundedCornerShape(100.dp)
+        )
+
         OutlinedTextField(
             value = loginVM.email,
-            onValueChange = {
-                loginVM.changeEmail(it)
-            },
+            onValueChange = { loginVM.changeEmail(it) },
             label = { Text(text = "Email") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier
@@ -58,13 +64,15 @@ fun principalScreen(navController: NavController, loginVM: Viewmodel){
 
         Button(
             onClick = {
-                loginVM.login { navController.navigate(Routes.screen3.Route)}
+                loginVM.createUser {  navController.navigate(Routes.screen3.Route) }
             }, modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 30.dp, end = 30.dp)
         ) {
-            Text(text = "Entrar")
+            Text(text = "Registrarse")
         }
+
+
 
     }
 }
