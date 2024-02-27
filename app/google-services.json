@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1023641374305",
+    "project_id": "proyectococktail-bf772",
+    "storage_bucket": "proyectococktail-bf772.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023641374305:android:aa8657ec46702dccb36420",
+        "android_client_info": {
+          "package_name": "com.example.proyectococktail"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBaLiAMIWYk4TRNCp0Df4YWUNSgTVS6Kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
