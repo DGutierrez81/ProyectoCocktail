@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.proyectococktail.Cocktails.Model.Routes
@@ -50,7 +51,7 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
 
     Scaffold(
         topBar = {loginVM.LogOrsign(screen)},
-        bottomBar = {BottomAppBar(navController)}
+        bottomBar = {BottomAppBar(navController, loginVM, screen)}
     ){innerPadding ->
 
         when(screen){
@@ -66,7 +67,7 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
 
                     Information("email", loginVM)
 
-                    Information("password", loginVM)
+                    PassW("password", loginVM)
                 }
             }
             2 -> {
@@ -82,7 +83,7 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
 
                     Information("email ", loginVM)
 
-                    Information("password ", loginVM)
+                    PassW("password ", loginVM)
             }
         }
 
@@ -92,17 +93,24 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
 }
 
 @Composable
-fun BottomAppBar(navController: NavController){
+fun BottomAppBar(navController: NavController, loginVM: Viewmodel, screen: Int){
     Box(
         Modifier
             .fillMaxWidth()
             .height(227.dp)
     ) {
-        SignUpdecision(
-            Modifier.fillMaxWidth(), {navController.navigate(Routes.ScreenHome.Route)}
-        )
+        when(screen){
+            1 -> SignUpdecision(
+                Modifier.fillMaxWidth(), {loginVM.createUser { navController.navigate(Routes.ScreenHome.Route) }}
+            )
+            2 -> SignUpdecision(
+                Modifier.fillMaxWidth(), {loginVM.login { navController.navigate(Routes.ScreenHome.Route) }}
+            )
+        }
     }
 }
+
+//loginVM.createUser {  navController.navigate(Routes.screen4.Route) }
 
 @Composable
 fun Information(valor: String, loginVM: Viewmodel){
@@ -117,6 +125,36 @@ fun Information(valor: String, loginVM: Viewmodel){
                 value = loginVM.InformationElection(valor),
                 onValueChange = { loginVM.ChangeElection(valor, it) },
                 label = { Text(text = valor) },
+                modifier = Modifier
+                    .padding(37.dp)
+                    .background(color = Color.White)
+                    .border(
+                        width = 2.dp,
+                        color = Color(0xFF00F5D4)
+                    ),
+                shape = RoundedCornerShape(100.dp)
+            )
+            loginVM.LogElection(valor = valor)
+
+        }
+    }
+}
+
+@Composable
+fun PassW(valor: String, loginVM: Viewmodel){
+    Box(
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextField(
+                value = loginVM.InformationElection(valor),
+                onValueChange = { loginVM.ChangeElection(valor, it) },
+                label = { Text(text = valor) },
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 modifier = Modifier
                     .padding(37.dp)
                     .background(color = Color.White)

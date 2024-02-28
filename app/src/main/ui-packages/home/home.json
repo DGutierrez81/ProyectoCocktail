@@ -1,0 +1,784 @@
+{
+  "name": "home",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "96:1521",
+    "version": "5242254931",
+    "component-id": "e47cf343bcc99359cd9db8ccbd361de462e903e7"
+  },
+  "default": "Home",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "Group 6"
+      },
+      {
+        "type": "image",
+        "id": "Logo (4) 1"
+      },
+      {
+        "type": "group",
+        "id": "AlNAl"
+      },
+      {
+        "type": "group",
+        "id": "FavOr"
+      },
+      {
+        "type": "group",
+        "id": "Vasos"
+      },
+      {
+        "type": "group",
+        "id": "tercera fila"
+      },
+      {
+        "type": "group",
+        "id": "Component 17"
+      },
+      {
+        "type": "group",
+        "id": "carita"
+      },
+      {
+        "type": "text",
+        "id": "favorites drinks"
+      },
+      {
+        "type": "vector",
+        "id": "rasgos"
+      },
+      {
+        "type": "vector",
+        "id": "cara"
+      },
+      {
+        "type": "vector",
+        "id": "vaso"
+      },
+      {
+        "type": "text",
+        "id": "ordinary drinks"
+      },
+      {
+        "type": "group",
+        "id": "Primera fila"
+      },
+      {
+        "type": "group",
+        "id": "Component 18"
+      },
+      {
+        "type": "vector",
+        "id": "copita"
+      },
+      {
+        "type": "text",
+        "id": "glasses cocktail"
+      },
+      {
+        "type": "vector",
+        "id": "copitaC"
+      },
+      {
+        "type": "text",
+        "id": "glass champagne"
+      },
+      {
+        "type": "group",
+        "id": "Segunda fila"
+      },
+      {
+        "type": "group",
+        "id": "Component 19"
+      },
+      {
+        "type": "group",
+        "id": "Conduce"
+      },
+      {
+        "type": "text",
+        "id": "alcoholics"
+      },
+      {
+        "type": "vector",
+        "id": "ruedas"
+      },
+      {
+        "type": "vector",
+        "id": "Carroceria"
+      },
+      {
+        "type": "group",
+        "id": "No conduce"
+      },
+      {
+        "type": "text",
+        "id": "no alcoholics"
+      },
+      {
+        "type": "vector",
+        "id": "ruedas2"
+      },
+      {
+        "type": "vector",
+        "id": "carroceria2"
+      }
+    ],
+    "modes": {
+      "Home": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": {
+              "top": "17.0",
+              "bottom": "17.0"
+            },
+            "children": [
+              "Group 6",
+              "Logo (4) 1",
+              "AlNAl"
+            ],
+            "item-spacing": "28.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "33.33333333333332",
+              "saturation": "0.13043478260869562",
+              "value": "0.27058823529411763"
+            }
+          },
+          {
+            "id": "Group 6",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "360.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "77.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "FavOr",
+              "Vasos"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Logo (4) 1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "6.5"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "0.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "373.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "370.0"
+              }
+            },
+            "image-content": "logo_4_1.png",
+            "scale": "cover"
+          },
+          {
+            "id": "AlNAl",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "Segunda fila",
+              "Component 19"
+            ],
+            "item-spacing": "80.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "FavOr",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "53.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "360.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "tercera fila",
+              "Component 17"
+            ],
+            "item-spacing": "52.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Vasos",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "33.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "0.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "Primera fila",
+              "Component 18"
+            ],
+            "item-spacing": "50.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "tercera fila",
+            "tap-handler": "$on tercera fila tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "carita",
+              "favorites drinks"
+            ],
+            "item-spacing": "12.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Component 17",
+            "tap-handler": "$on Component 17 tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "vaso",
+              "ordinary drinks"
+            ],
+            "item-spacing": "12.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "carita",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "rasgos",
+              "cara"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "favorites drinks",
+            "color": {
+              "alpha": "1.0",
+              "hue": "171.9183673469388",
+              "saturation": "1.0",
+              "value": "0.9607843137254902"
+            },
+            "text-content": "favorites drinks",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "rasgos",
+            "margin": {
+              "left": "4.43255615234375",
+              "top": "7.214599609375",
+              "right": "4.47979736328125",
+              "bottom": "4.444507598876953"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rasgos.svg"
+          },
+          {
+            "id": "cara",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "cara.svg"
+          },
+          {
+            "id": "vaso",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "18.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.0"
+              }
+            },
+            "vector-content": "vaso.svg"
+          },
+          {
+            "id": "ordinary drinks",
+            "color": {
+              "alpha": "1.0",
+              "hue": "171.9183673469388",
+              "saturation": "1.0",
+              "value": "0.9607843137254902"
+            },
+            "text-content": "ordinary drinks",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "Primera fila",
+            "padding": {
+              "top": "3.0",
+              "bottom": "3.0"
+            },
+            "tap-handler": "$on Primera fila tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "copita",
+              "glasses cocktail"
+            ],
+            "item-spacing": "12.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Component 18",
+            "tap-handler": "$on Component 18 tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "copitaC",
+              "glass champagne"
+            ],
+            "item-spacing": "12.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "copita",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "26.10853385925293"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "24.00234603881836"
+              }
+            },
+            "vector-content": "copita.svg"
+          },
+          {
+            "id": "glasses cocktail",
+            "color": {
+              "alpha": "1.0",
+              "hue": "171.9183673469388",
+              "saturation": "1.0",
+              "value": "0.9607843137254902"
+            },
+            "text-content": "glasses cocktail",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "copitaC",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "30.0"
+              }
+            },
+            "vector-content": "copita_c.svg"
+          },
+          {
+            "id": "glass champagne",
+            "color": {
+              "alpha": "1.0",
+              "hue": "300.9448818897638",
+              "saturation": "0.996078431372549",
+              "value": "1.0"
+            },
+            "text-content": "glass champagne",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "Segunda fila",
+            "tap-handler": "$on Segunda fila tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "children": [
+              "Conduce",
+              "alcoholics"
+            ],
+            "item-spacing": "12.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Component 19",
+            "tap-handler": "$on Component 19 tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "children": [
+              "No conduce",
+              "no alcoholics"
+            ],
+            "item-spacing": "30.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Conduce",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "18.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "13.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "ruedas",
+              "Carroceria"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "alcoholics",
+            "color": {
+              "alpha": "1.0",
+              "hue": "300.9448818897638",
+              "saturation": "0.996078431372549",
+              "value": "1.0"
+            },
+            "text-content": "alcoholics",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "ruedas",
+            "margin": {
+              "left": "2.0",
+              "top": "9.0",
+              "right": "2.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "ruedas.svg"
+          },
+          {
+            "id": "Carroceria",
+            "margin": {
+              "bottom": "2.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "carroceria.svg"
+          },
+          {
+            "id": "No conduce",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "18.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "18.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "ruedas2",
+              "carroceria2"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "no alcoholics",
+            "color": {
+              "alpha": "1.0",
+              "hue": "300.9448818897638",
+              "saturation": "0.996078431372549",
+              "value": "1.0"
+            },
+            "text-content": "no alcoholics",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "20.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          },
+          {
+            "id": "ruedas2",
+            "margin": {
+              "left": "2.0",
+              "top": "12.0",
+              "right": "2.5879993438720703",
+              "bottom": "1.9965953826904297"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "ruedas2.svg"
+          },
+          {
+            "id": "carroceria2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "carroceria2.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "on tercera fila tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Component 17 tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Primera fila tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Component 18 tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Segunda fila tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Component 19 tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "Home",
+      "size": {
+        "width": 360.0,
+        "height": 610.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

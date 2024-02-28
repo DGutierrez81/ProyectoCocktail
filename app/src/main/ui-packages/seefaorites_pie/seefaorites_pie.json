@@ -1,0 +1,84 @@
+{
+  "name": "seefaorites_pie",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "82:150",
+    "version": "5242495359",
+    "component-id": "801eec072641e2743e840706b84b235cfb36ff14"
+  },
+  "default": "SeefaoritesPie",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "text",
+        "id": "see favorites"
+      }
+    ],
+    "modes": {
+      "SeefaoritesPie": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": {
+              "left": "99.0",
+              "right": "99.0"
+            },
+            "arrangement": "row",
+            "children": [
+              "see favorites"
+            ],
+            "item-spacing": "10.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "33.33333333333332",
+              "saturation": "0.13043478260869562",
+              "value": "0.27058823529411763"
+            }
+          },
+          {
+            "id": "see favorites",
+            "tap-handler": "$on see favorites tapped",
+            "color": {
+              "alpha": "1.0",
+              "hue": "171.9183673469388",
+              "saturation": "1.0",
+              "value": "0.9607843137254902"
+            },
+            "text-content": "see favorites",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "36.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "on see favorites tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "SeefaoritesPie",
+      "size": {
+        "width": 360.0,
+        "height": 75.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

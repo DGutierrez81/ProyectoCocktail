@@ -20,6 +20,7 @@ import com.example.proyectococktail.Cocktails.Domain.NameUseCase
 import com.example.proyectococktail.Cocktails.Domain.RandomCocktail
 import com.example.proyectococktail.Cocktails.Model.CocktailUser
 import com.example.proyectococktail.Cocktails.Model.Response.User
+import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.Cocktails.ui.State.drinkState
 import com.example.proyectococktail.basilkeyoutline.BasilKeyOutline
 import com.example.proyectococktail.complogin.CompLogIn
@@ -27,6 +28,7 @@ import com.example.proyectococktail.compsignup.CompSignUp
 import com.example.proyectococktail.eiuser.EiUser
 import com.example.proyectococktail.fluentemojihighcontrastenvelope.FluentEmojiHighContrastEnvelope
 import com.example.proyectococktail.keygreen.KeyGreen
+import com.example.proyectococktail.signupdecision.SignUpdecision
 import com.example.proyectococktail.sobregreen.SobreGreen
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -302,6 +304,8 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
             }
         }
     }
+
+
     @Composable
     fun LogElection(valor: String): Unit {
         return when (valor) {

@@ -5,7 +5,7 @@
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
     "node": "57:142",
-    "version": "5241297920",
+    "version": "5242398837",
     "component-id": "b74c9f649726434b962e35a17d09ef944a2936df"
   },
   "default": "Lupa",
@@ -26,6 +26,7 @@
         "rules": [
           {
             "id": "top_level",
+            "tap-handler": "$on Lupa tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -56,6 +57,13 @@
           }
         ]
       }
+    }
+  },
+  "parameters": {
+    "on Lupa tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
     }
   },
   "previews": [

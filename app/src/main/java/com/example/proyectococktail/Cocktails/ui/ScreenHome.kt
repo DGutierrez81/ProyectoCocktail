@@ -1,20 +1,31 @@
 package com.example.proyectococktail.Cocktails.ui
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.wear.compose.material.Button
-
 import com.example.proyectococktail.Cocktails.Model.Routes
+import com.example.proyectococktail.home.Home
+import com.example.proyectococktail.logito.Logito
+import com.example.proyectococktail.lupa.Lupa
+import com.example.proyectococktail.seefaoritespie.SeefaoritesPie
+
 
 @Composable
 fun ScreenHome(navController: NavController, viewModel: Viewmodel){
@@ -22,42 +33,58 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel){
 
     }
 
+    Scaffold (
+        topBar = {Cuerpo(navController, viewModel)},
+        bottomBar = {Pie()}
+    ){innerPadding ->
+        Home(Modifier.padding(innerPadding))
+    }
+}
 
-    Column {
-        OutlinedTextField(
-            value = viewModel.cocktailName,
-            onValueChange = { viewModel.changeNameCocktail(it) },
-            label = { Text(text = "Busqueda por nombre") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp),
-            shape = RoundedCornerShape(50.dp)
-        )
 
-        Button(onClick = {
-            viewModel.getName(viewModel.cocktailName)
-            navController.navigate(Routes.screen3.Route)
-        }) {
-            Text(text = "Margarita",
-                modifier = Modifier.width(200.dp))
+@Composable
+fun Cuerpo(navController: NavController, viewModel: Viewmodel) {
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .background(color = Color(0xFF45413C))
+    ) {
+        Row(
+            Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Logito(Modifier.padding(5.dp))
+            TextField(
+                value = viewModel.cocktailName,
+                onValueChange = { viewModel.changeNameCocktail(it) },
+                label = { Text(text = "Busqueda por nombre") },
+                modifier = Modifier
+                    .padding(5.dp)
+                    .background(color = Color.White)
+                    .border(
+                        width = 2.dp,
+                        color = Color(0xFF00F5D4)
+                    ),
+                shape = RoundedCornerShape(100.dp)
+            )
 
+            Lupa(Modifier.padding(5.dp).size(30.dp, 30.dp)) {
+                viewModel.getName(viewModel.cocktailName)
+                navController.navigate(Routes.screen3.Route)
+            }
         }
+    }
+}
 
-        Button(onClick = {
-            /*navController.navigate(Routes.ViewConktailUser.Route)*/
-        },
-            modifier = Modifier.width(200.dp)) {
-            Text(text = "UserCocktail")
-
-        }
-
-        Button(onClick = {
-            viewModel.getRandom()
-            /*navController.navigate(Routes.Random.Route)*/
-        },
-            modifier = Modifier.width(200.dp)) {
-            Text(text = "Random")
-
-        }
+@Composable
+fun Pie(){
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(75.dp)
+    ) {
+        SeefaoritesPie(Modifier.fillMaxWidth()) {}
     }
 }

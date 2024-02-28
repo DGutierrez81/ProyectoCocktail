@@ -19,8 +19,7 @@ import com.example.proyectococktail.Cocktails.ui.Screen2
 import com.example.proyectococktail.Cocktails.ui.Screen3
 import com.example.proyectococktail.Cocktails.ui.ScreenHome
 import com.example.proyectococktail.Cocktails.ui.Viewmodel
-import com.example.proyectococktail.Cocktails.ui.principalScreen
-import com.example.proyectococktail.pantallaprincipal.PantallaPrincipal
+import com.example.proyectococktail.Cocktails.ui.PrincipalScreen
 import com.example.proyectococktail.ui.theme.ProyectoCocktailTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = Routes.principalScreen.Route){
-                        composable(Routes.principalScreen.Route){principalScreen(navController, viewModel)}
+                        composable(Routes.principalScreen.Route){PrincipalScreen(navController, viewModel)}
                         composable(Routes.screen2.Route){Screen2(navController, viewModel)}
                         composable(Routes.screen3.Route){Screen3(navController, viewModel)}
                         composable(Routes.ScreenHome.Route){ScreenHome(navController, viewModel)}
