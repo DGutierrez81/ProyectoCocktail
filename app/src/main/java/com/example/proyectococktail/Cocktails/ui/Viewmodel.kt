@@ -42,6 +42,9 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     var _ingredient by mutableStateOf("")
         private set
 
+    var pantallasI by mutableStateOf(0)
+        private set
+
 
 
     private val _show = mutableStateOf<Boolean>(false)
@@ -250,6 +253,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
                 }
                 _cocktailData.value = documents
             }
+    }
+
+    fun pantallasIncio(screen: Int){
+        pantallasI = screen
     }
 
     fun closeAlert(){

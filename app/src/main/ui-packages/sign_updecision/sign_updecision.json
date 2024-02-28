@@ -5,7 +5,7 @@
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
     "node": "192:537",
-    "version": "5237151431",
+    "version": "5240577508",
     "component-id": "0dc570e427400c1642c334dd129e15b205bbef88"
   },
   "default": "SignUPDecision",
@@ -29,12 +29,16 @@
         "id": "Logo (1) 2"
       },
       {
-        "type": "vector",
-        "id": "Vectorete"
+        "type": "group",
+        "id": "emojione:up-arrow_synth"
       },
       {
         "type": "vector",
         "id": "Vectorito"
+      },
+      {
+        "type": "vector",
+        "id": "Vectorete"
       }
     ],
     "modes": {
@@ -43,6 +47,7 @@
           {
             "id": "top_level",
             "padding": "31.0",
+            "arrangement": "row",
             "children": [
               "EleccionSignUp"
             ],
@@ -75,7 +80,7 @@
           },
           {
             "id": "emojione:up-arrow",
-            "tap-handler": "$on emojione:up-arrow tapped",
+            "presence": "false",
             "relative-transform": [
               [
                 "-0.0003764861903619021",
@@ -91,16 +96,16 @@
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "fixed",
-                "value": "64.0"
+                "value": "50.0"
               },
               "height-constraints": {
                 "sizing-mode": "fixed",
-                "value": "64.0"
+                "value": "50.0"
               }
             },
             "is-structured": "false",
             "children": [
-              "Vectorete",
+              "emojione:up-arrow_synth",
               "Vectorito"
             ]
           },
@@ -121,52 +126,55 @@
             "scale": "cover"
           },
           {
-            "id": "Vectorete",
-            "margin": {
-              "left": "2.0007735228864476",
-              "top": "2.0007732844678685",
-              "right": "1.9766408819705248",
-              "bottom": "1.976641120389104"
-            },
+            "id": "emojione:up-arrow_synth",
+            "presence": "false",
+            "opacity": "100.0",
+            "padding": "2.0",
             "alignment": {
               "horizontal": {
                 "attachment": "start",
-                "offset": "0.011236632359214127"
+                "offset": "0.009410857950570062"
               },
               "vertical": {
                 "attachment": "start",
-                "offset": "0.011294091236777604"
+                "offset": "29.499996378814103"
               }
             },
+            "relative-transform": [
+              [
+                "-0.0003764861903619021",
+                "0.9999999403953552",
+                "0.0"
+              ],
+              [
+                "-0.9999999403953552",
+                "-0.0003764861903619021",
+                "0.0"
+              ]
+            ],
             "size-constraints": {
               "width-constraints": {
-                "sizing-mode": "proportional",
-                "value": "1.0"
+                "sizing-mode": "fixed",
+                "value": "50.0"
               },
               "height-constraints": {
-                "sizing-mode": "proportional",
-                "value": "1.0"
+                "sizing-mode": "fixed",
+                "value": "50.0"
               }
             },
-            "vector-content": "vectorete.svg"
+            "arrangement": "row",
+            "children": [
+              "Vectorete"
+            ],
+            "item-spacing": "10.0"
           },
           {
             "id": "Vectorito",
             "margin": {
-              "left": "15.00606611277908",
-              "top": "16.005616408830974",
-              "right": "14.98188835568726",
-              "bottom": "15.981584968045354"
-            },
-            "alignment": {
-              "horizontal": {
-                "attachment": "start",
-                "offset": "0.006066112779080868"
-              },
-              "vertical": {
-                "attachment": "start",
-                "offset": "0.0070613184361718595"
-              }
+              "left": "11.723401412571548",
+              "top": "12.504427873720488",
+              "right": "11.704688015917782",
+              "bottom": "12.485573201964144"
             },
             "size-constraints": {
               "width-constraints": {
@@ -177,19 +185,26 @@
                 "sizing-mode": "proportional",
                 "value": "1.0"
               }
-            },
-            "vector-content": "vectorito.svg"
+            }
+          },
+          {
+            "id": "Vectorete",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "60.02258559514303"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "60.02258559514303"
+              }
+            }
           }
         ]
       }
     }
   },
   "parameters": {
-    "on emojione:up-arrow tapped": {
-      "data-type": "void-callback",
-      "required": false,
-      "description": ""
-    },
     "on Logo (1) 2 tapped": {
       "data-type": "void-callback",
       "required": false,

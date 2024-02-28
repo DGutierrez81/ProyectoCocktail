@@ -1,0 +1,79 @@
+{
+  "name": "comp_log_in",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "192:553",
+    "version": "5240148611",
+    "component-id": "078afb3c6b8893b18e794089ee7cd80efb9e3ba8"
+  },
+  "default": "Comp.LogIn",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "text",
+        "id": "Log in"
+      }
+    ],
+    "modes": {
+      "Comp.LogIn": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": {
+              "left": "60.0",
+              "top": "12.0",
+              "right": "60.0",
+              "bottom": "12.0"
+            },
+            "arrangement": "row",
+            "children": [
+              "Log in"
+            ],
+            "item-spacing": "10.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "33.33333333333332",
+              "saturation": "0.13043478260869562",
+              "value": "0.27058823529411763"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "Log in",
+            "color": {
+              "alpha": "1.0",
+              "hue": "300.9448818897638",
+              "saturation": "0.996078431372549",
+              "value": "1.0"
+            },
+            "text-content": "Log in",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "96.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Comp.LogIn",
+      "size": {
+        "width": 360.0,
+        "height": 227.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

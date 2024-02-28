@@ -23,7 +23,13 @@ import com.example.proyectococktail.pantallaprincipal.PantallaPrincipal
 @Composable
 fun principalScreen(navController: NavController, loginVM: Viewmodel){
     // DCS - Estructura de la interfaz de inicio de sesión con campos de texto y botón de entrada.
-    PantallaPrincipal(Modifier, {navController.navigate(Routes.screen2.Route)}, {})
+    PantallaPrincipal(Modifier, {
+        loginVM.pantallasIncio(1)
+        navController.navigate(Routes.screen2.Route)
+                                }, {
+        loginVM.pantallasIncio(2)
+        navController.navigate(Routes.screen2.Route)
+    })
 /*
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
