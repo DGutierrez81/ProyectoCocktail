@@ -1,0 +1,75 @@
+{
+  "name": "logito",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "57:150",
+    "version": "5237168249",
+    "component-id": "dd485a9e0861730f2ca52fde621055a64ca5b5fb"
+  },
+  "default": "Logito",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "image",
+        "id": "Logo (3) 1"
+      }
+    ],
+    "modes": {
+      "Logito": {
+        "rules": [
+          {
+            "id": "top_level",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "Logo (3) 1"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Logo (3) 1",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "32.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "36.0"
+              }
+            },
+            "image-content": "logo_3_1.png",
+            "scale": "cover"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Logito",
+      "size": {
+        "width": 32.0,
+        "height": 36.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

@@ -1,0 +1,73 @@
+{
+  "name": "lupa",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "57:142",
+    "version": "5237168249",
+    "component-id": "b74c9f649726434b962e35a17d09ef944a2936df"
+  },
+  "default": "Lupa",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      }
+    ],
+    "modes": {
+      "Lupa": {
+        "rules": [
+          {
+            "id": "top_level",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "Vector"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Vector",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "12.019294738769531"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "12.018294334411621"
+              }
+            },
+            "vector-content": "vector.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Lupa",
+      "size": {
+        "width": 12.019294738769531,
+        "height": 12.018294334411621
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

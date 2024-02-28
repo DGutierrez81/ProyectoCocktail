@@ -18,11 +18,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.proyectococktail.Cocktails.Model.Routes
+import com.example.proyectococktail.pantallaprincipal.PantallaPrincipal
 
 @Composable
 fun principalScreen(navController: NavController, loginVM: Viewmodel){
     // DCS - Estructura de la interfaz de inicio de sesión con campos de texto y botón de entrada.
-
+    PantallaPrincipal(Modifier, {navController.navigate(Routes.screen2.Route)}, {})
+/*
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
@@ -67,4 +69,6 @@ fun principalScreen(navController: NavController, loginVM: Viewmodel){
         }
 
     }
+
+ */
 }

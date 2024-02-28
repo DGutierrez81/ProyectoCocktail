@@ -1,0 +1,70 @@
+{
+  "name": "fluent_emoji_high_contrast_envelope",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "57:80",
+    "version": "5237168249",
+    "component-id": "73f7ba38418d4d5022030ae26566411896943299"
+  },
+  "default": "fluent-emoji-high-contrast:envelope",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "VectorSobre"
+      }
+    ],
+    "modes": {
+      "fluent-emoji-high-contrast:envelope": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "VectorSobre"
+            ]
+          },
+          {
+            "id": "VectorSobre",
+            "margin": {
+              "left": "1.5625",
+              "top": "7.8125",
+              "right": "1.5624961853027344",
+              "bottom": "7.812496185302734"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector_sobre.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "fluent-emoji-high-contrast:envelope",
+      "size": {
+        "width": 50.0,
+        "height": 50.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

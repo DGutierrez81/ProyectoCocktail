@@ -1,0 +1,211 @@
+{
+  "name": "sign_updecision",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "192:537",
+    "version": "5237151431",
+    "component-id": "0dc570e427400c1642c334dd129e15b205bbef88"
+  },
+  "default": "SignUPDecision",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "EleccionSignUp"
+      },
+      {
+        "type": "group",
+        "id": "emojione:up-arrow"
+      },
+      {
+        "type": "image",
+        "id": "Logo (1) 2"
+      },
+      {
+        "type": "vector",
+        "id": "Vectorete"
+      },
+      {
+        "type": "vector",
+        "id": "Vectorito"
+      }
+    ],
+    "modes": {
+      "SignUPDecision": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": "31.0",
+            "children": [
+              "EleccionSignUp"
+            ],
+            "item-spacing": "10.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "33.33333333333332",
+              "saturation": "0.13043478260869562",
+              "value": "0.27058823529411763"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "EleccionSignUp",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "emojione:up-arrow",
+              "Logo (1) 2"
+            ],
+            "item-spacing": "80.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "emojione:up-arrow",
+            "tap-handler": "$on emojione:up-arrow tapped",
+            "relative-transform": [
+              [
+                "-0.0003764861903619021",
+                "0.9999999403953552",
+                "0.0"
+              ],
+              [
+                "-0.9999999403953552",
+                "-0.0003764861903619021",
+                "0.0"
+              ]
+            ],
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "64.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "64.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Vectorete",
+              "Vectorito"
+            ]
+          },
+          {
+            "id": "Logo (1) 2",
+            "tap-handler": "$on Logo (1) 2 tapped",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "114.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "109.0"
+              }
+            },
+            "image-content": "logo_1_2.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Vectorete",
+            "margin": {
+              "left": "2.0007735228864476",
+              "top": "2.0007732844678685",
+              "right": "1.9766408819705248",
+              "bottom": "1.976641120389104"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.011236632359214127"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "0.011294091236777604"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vectorete.svg"
+          },
+          {
+            "id": "Vectorito",
+            "margin": {
+              "left": "15.00606611277908",
+              "top": "16.005616408830974",
+              "right": "14.98188835568726",
+              "bottom": "15.981584968045354"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.006066112779080868"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "0.0070613184361718595"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vectorito.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "on emojione:up-arrow tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "on Logo (1) 2 tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "SignUPDecision",
+      "size": {
+        "width": 360.0,
+        "height": 227.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

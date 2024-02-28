@@ -1,0 +1,115 @@
+{
+  "name": "basil_key_outline",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "57:86",
+    "version": "5237168249",
+    "component-id": "bbd83350392316416efd51b453be8ac30da7fcc0"
+  },
+  "default": "basil:key-outline",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "top_level_synth"
+      },
+      {
+        "type": "vector",
+        "id": "VectorLlave2"
+      },
+      {
+        "type": "vector",
+        "id": "VectorLlave"
+      }
+    ],
+    "modes": {
+      "basil:key-outline": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "top_level_synth",
+              "VectorLlave2"
+            ]
+          },
+          {
+            "id": "top_level_synth",
+            "opacity": "100.0",
+            "padding": {
+              "left": "3.0",
+              "top": "13.0",
+              "right": "3.0",
+              "bottom": "13.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "VectorLlave"
+            ],
+            "item-spacing": "10.0"
+          },
+          {
+            "id": "VectorLlave2",
+            "margin": {
+              "left": "10.58154296875",
+              "top": "20.81591796875",
+              "right": "31.74441432952881",
+              "bottom": "20.816027641296387"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector_llave2.svg"
+          },
+          {
+            "id": "VectorLlave",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "44.7911491394043"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "23.958337783813477"
+              }
+            },
+            "vector-content": "vector_llave.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "basil:key-outline",
+      "size": {
+        "width": 50.7911491394043,
+        "height": 49.958335876464844
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

@@ -1,0 +1,79 @@
+{
+  "name": "comp_sign_up",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "OvtgJRjqKK7dZHFs854c5o",
+    "node": "190:564",
+    "version": "5237136639",
+    "component-id": "6deeef345caf34b29ed1afb6497271cb7b359a99"
+  },
+  "default": "Comp.SignUp",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "text",
+        "id": "Sign up"
+      }
+    ],
+    "modes": {
+      "Comp.SignUp": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": {
+              "left": "41.0",
+              "top": "11.0",
+              "right": "41.0",
+              "bottom": "11.0"
+            },
+            "arrangement": "row",
+            "children": [
+              "Sign up"
+            ],
+            "item-spacing": "10.0",
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "33.33333333333332",
+              "saturation": "0.13043478260869562",
+              "value": "0.27058823529411763"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "Sign up",
+            "color": {
+              "alpha": "1.0",
+              "hue": "171.9183673469388",
+              "saturation": "1.0",
+              "value": "0.9607843137254902"
+            },
+            "text-content": "Sign up",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "96.0",
+            "line-height": "1.2158203125",
+            "typeface": "Jolly Lodger"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Comp.SignUp",
+      "size": {
+        "width": 360.0,
+        "height": 227.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}
