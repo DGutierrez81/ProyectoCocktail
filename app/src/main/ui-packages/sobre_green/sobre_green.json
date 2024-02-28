@@ -1,14 +1,14 @@
 {
-  "name": "logito",
+  "name": "sobre_green",
   "version": 32,
   "source-key": {
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
-    "node": "57:150",
-    "version": "5241297920",
-    "component-id": "dd485a9e0861730f2ca52fde621055a64ca5b5fb"
+    "node": "57:124",
+    "version": "5241314562",
+    "component-id": "3f3dc819703a7f3ef145c9c9cf42a6ee3b524911"
   },
-  "default": "Logito",
+  "default": "sobreGreen",
   "design": {
     "atoms": [
       {
@@ -17,15 +17,22 @@
         "root": "true"
       },
       {
-        "type": "image",
-        "id": "Logo (3) 1"
+        "type": "vector",
+        "id": "VectorSobreGreen"
       }
     ],
     "modes": {
-      "Logito": {
+      "sobreGreen": {
         "rules": [
           {
             "id": "top_level",
+            "opacity": "0.8799999952316284",
+            "padding": {
+              "left": "2.0",
+              "top": "8.0",
+              "right": "2.0",
+              "bottom": "8.0"
+            },
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -34,27 +41,24 @@
                 "sizing-mode": "shrink"
               }
             },
-            "arrangement": "row",
             "children": [
-              "Logo (3) 1"
+              "VectorSobreGreen"
             ],
-            "item-spacing": "10.0",
-            "clip-content": "false"
+            "item-spacing": "10.0"
           },
           {
-            "id": "Logo (3) 1",
+            "id": "VectorSobreGreen",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "fixed",
-                "value": "32.0"
+                "value": "46.875003814697266"
               },
               "height-constraints": {
                 "sizing-mode": "fixed",
-                "value": "36.0"
+                "value": "34.375003814697266"
               }
             },
-            "image-content": "logo_3_1.png",
-            "scale": "cover"
+            "vector-content": "vector_sobre_green.svg"
           }
         ]
       }
@@ -62,10 +66,10 @@
   },
   "previews": [
     {
-      "design": "Logito",
+      "design": "sobreGreen",
       "size": {
-        "width": 32.0,
-        "height": 36.0
+        "width": 50.875003814697266,
+        "height": 50.375003814697266
       }
     }
   ],

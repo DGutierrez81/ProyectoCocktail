@@ -1,14 +1,14 @@
 {
-  "name": "basil_key_outline",
+  "name": "key_green",
   "version": 32,
   "source-key": {
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
-    "node": "57:86",
+    "node": "57:130",
     "version": "5241297920",
-    "component-id": "bbd83350392316416efd51b453be8ac30da7fcc0"
+    "component-id": "af604e983f5cb70217d80a802e89f4ef8942d289"
   },
-  "default": "basil:key-outline",
+  "default": "KeyGreen",
   "design": {
     "atoms": [
       {
@@ -22,22 +22,22 @@
       },
       {
         "type": "vector",
-        "id": "VectorLlave2"
+        "id": "Vectorgreen"
       },
       {
         "type": "vector",
-        "id": "VectorLlave"
+        "id": "VectorLlavegreen"
       }
     ],
     "modes": {
-      "basil:key-outline": {
+      "KeyGreen": {
         "rules": [
           {
             "id": "top_level",
             "is-structured": "false",
             "children": [
               "top_level_synth",
-              "VectorLlave2"
+              "Vectorgreen"
             ]
           },
           {
@@ -57,13 +57,15 @@
                 "sizing-mode": "shrink"
               }
             },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
             "children": [
-              "VectorLlave"
+              "VectorLlavegreen"
             ],
             "item-spacing": "10.0"
           },
           {
-            "id": "VectorLlave2",
+            "id": "Vectorgreen",
             "margin": {
               "left": "10.58154296875",
               "top": "20.81591796875",
@@ -80,10 +82,10 @@
                 "value": "1.0"
               }
             },
-            "vector-content": "vector_llave2.svg"
+            "vector-content": "vectorgreen.svg"
           },
           {
-            "id": "VectorLlave",
+            "id": "VectorLlavegreen",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "fixed",
@@ -94,7 +96,7 @@
                 "value": "23.958337783813477"
               }
             },
-            "vector-content": "vector_llave.svg"
+            "vector-content": "vector_llavegreen.svg"
           }
         ]
       }
@@ -102,7 +104,7 @@
   },
   "previews": [
     {
-      "design": "basil:key-outline",
+      "design": "KeyGreen",
       "size": {
         "width": 50.7911491394043,
         "height": 49.958335876464844

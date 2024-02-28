@@ -49,7 +49,7 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
     val screen = loginVM.pantallasI
 
     Scaffold(
-        topBar = {Toolbar(screen)},
+        topBar = {loginVM.LogOrsign(screen)},
         bottomBar = {BottomAppBar(navController)}
     ){innerPadding ->
 
@@ -62,81 +62,11 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
                         .padding(innerPadding)
                         .background(color = Color(0xFF45413C))
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            TextField(
-                                value = loginVM.userName,
-                                onValueChange = { loginVM.changeUserName(it) },
-                                label = { Text(text = "Username") },
-                                modifier = Modifier
-                                    .padding(37.dp)
-                                    .background(color = Color.White)
-                                    .border(
-                                        width = 2.dp,
-                                        color = Color(0xFF00F5D4)
-                                    ),
-                                shape = RoundedCornerShape(100.dp)
-                            )
-                            EiUser(Modifier.size(50.dp,50.dp))
-                        }
-                    }
+                    Information("userName", loginVM)
 
-                    Box(
-                        Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            TextField(
-                                value = loginVM.email,
-                                onValueChange = { loginVM.changeEmail(it) },
-                                label = { Text(text = "Email") },
-                                modifier = Modifier
-                                    .padding(37.dp)
-                                    .background(color = Color.White)
-                                    .border(
-                                        width = 2.dp,
-                                        color = Color(0xFF00F5D4)
-                                    ),
-                                shape = RoundedCornerShape(100.dp)
-                            )
-                            FluentEmojiHighContrastEnvelope(Modifier.size(50.dp,50.dp))
+                    Information("email", loginVM)
 
-                        }
-                    }
-
-                    Box(
-                        Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            TextField(
-                                value = loginVM.password,
-                                onValueChange = { loginVM.changePassword(it) },
-                                label = { Text(text = "Password") },
-                                modifier = Modifier
-                                    .padding(37.dp)
-                                    .background(color = Color.White)
-                                    .border(
-                                        width = 2.dp,
-                                        color = Color(0xFF00F5D4)
-                                    ),
-                                shape = RoundedCornerShape(100.dp)
-                            )
-                            BasilKeyOutline(Modifier.size(50.dp,50.dp))
-
-                        }
-                    }
+                    Information("password", loginVM)
                 }
             }
             2 -> {
@@ -149,320 +79,17 @@ fun Screen2(navController: NavController, loginVM: Viewmodel){
                         .background(color = Color(0xFF45413C))
                 ) {
                     Spacer(modifier = Modifier.padding(37.dp))
-                    Box(
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {TextField(
-                            value = loginVM.email,
-                            onValueChange = { loginVM.changeEmail(it) },
-                            label = { Text(text = "Email") },
-                            modifier = Modifier
-                                .padding(37.dp)
-                                .background(color = Color.White)
-                                .border(
-                                    width = 2.dp,
-                                    color = Color(0xFF00F5D4)
-                                ),
-                            shape = RoundedCornerShape(100.dp)
-                        )
-                            FluentEmojiHighContrastEnvelope(Modifier.size(50.dp,50.dp))
 
-                        }
-                    }
+                    Information("email ", loginVM)
 
-                    Box(
-                        Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            TextField(
-                                value = loginVM.password,
-                                onValueChange = { loginVM.changePassword(it) },
-                                label = { Text(text = "Password") },
-                                modifier = Modifier
-                                    .padding(37.dp)
-                                    .background(color = Color.White)
-                                    .border(
-                                        width = 2.dp,
-                                        color = Color(0xFF00F5D4)
-                                    ),
-                                shape = RoundedCornerShape(100.dp)
-                            )
-                            BasilKeyOutline(Modifier.size(50.dp,50.dp))
-
-                        }
-                    }
+                    Information("password ", loginVM)
             }
         }
 
         }
-
-
-        /*
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .background(color = Color(0xFF45413C))
-        ) {
-            Box(
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextField(
-                        value = loginVM.userName,
-                        onValueChange = { loginVM.changeUserName(it) },
-                        label = { Text(text = "Username") },
-                        modifier = Modifier
-                            .padding(37.dp)
-                            .background(color = Color.White)
-                            .border(
-                                width = 2.dp,
-                                color = Color(0xFF00F5D4)
-                            ),
-                        shape = RoundedCornerShape(100.dp)
-                    )
-                    EiUser(Modifier.size(50.dp,50.dp))
-                }
-            }
-
-            Box(
-                Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextField(
-                        value = loginVM.email,
-                        onValueChange = { loginVM.changeEmail(it) },
-                        label = { Text(text = "Email") },
-                        modifier = Modifier
-                            .padding(37.dp)
-                            .background(color = Color.White)
-                            .border(
-                                width = 2.dp,
-                                color = Color(0xFF00F5D4)
-                            ),
-                        shape = RoundedCornerShape(100.dp)
-                    )
-                    FluentEmojiHighContrastEnvelope(Modifier.size(50.dp,50.dp))
-
-                }
-            }
-
-            Box(
-                Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextField(
-                        value = loginVM.password,
-                        onValueChange = { loginVM.changePassword(it) },
-                        label = { Text(text = "Password") },
-                        modifier = Modifier
-                            .padding(37.dp)
-                            .background(color = Color.White)
-                            .border(
-                                width = 2.dp,
-                                color = Color(0xFF00F5D4)
-                            ),
-                        shape = RoundedCornerShape(100.dp)
-                    )
-                    BasilKeyOutline(Modifier.size(50.dp,50.dp))
-
-                }
-            }
-        }
-
-         */
     }
-/*
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize()
-    ) {
-
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(227.dp)
-        ) {
-            CompSignUp(
-                Modifier.fillMaxWidth()
-            )
-        }
-
-        Box(
-            Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                OutlinedTextField(
-                    value = loginVM.userName,
-                    onValueChange = { loginVM.changeUserName(it) },
-                    label = { Text(text = "Username") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 30.dp, end = 30.dp),
-                    shape = RoundedCornerShape(100.dp)
-                )
-                EiUser(Modifier.size(50.dp,50.dp))
-            }
-        }
-
-        Box(
-            Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                OutlinedTextField(
-                    value = loginVM.email,
-                    onValueChange = { loginVM.changeEmail(it) },
-                    label = { Text(text = "Username") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 30.dp, end = 30.dp),
-                    shape = RoundedCornerShape(100.dp)
-                )
-                FluentEmojiHighContrastEnvelope(Modifier.size(50.dp,50.dp))
-            }
-        }
-
-        Box(
-            Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                OutlinedTextField(
-                    value = loginVM.password,
-                    onValueChange = { loginVM.changePassword(it) },
-                    label = { Text(text = "Username") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 30.dp, end = 30.dp),
-                    shape = RoundedCornerShape(100.dp)
-                )
-                BasilKeyOutline(Modifier.size(50.dp,50.dp))
-            }
-        }
-
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(227.dp)
-        ) {
-            SignUpdecision(
-                Modifier.fillMaxWidth()
-            )
-        }
-
-
-        /*
-        OutlinedTextField(
-            value = loginVM.userName,
-            onValueChange = { loginVM.changeUserName(it) },
-            label = { Text(text = "Username") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp),
-            shape = RoundedCornerShape(100.dp)
-        )
-
-        OutlinedTextField(
-            value = loginVM.email,
-            onValueChange = { loginVM.changeEmail(it) },
-            label = { Text(text = "Email") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp)
-        )
-
-        OutlinedTextField(
-            value = loginVM.password,
-            onValueChange = { loginVM.changePassword(it) },
-            label = { Text(text = "Password") },
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp)
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(
-            onClick = {
-                loginVM.createUser {  navController.navigate(Routes.screen3.Route) }
-            }, modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp)
-        ) {
-            Text(text = "Registrarse")
-        }
-
-
-
-         */
-
-    }
-
-
- */
 
 }
-
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-fun Toolbar(screen: Int) {
-    when(screen){
-        1 -> {
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(227.dp)
-            ) {
-                CompSignUp(
-                    Modifier.fillMaxWidth()
-                )
-            }
-        }
-        2 -> {
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(227.dp)
-            ) {
-                CompLogIn(
-                    Modifier.fillMaxWidth()
-                )
-            }
-        }
-    }
-}
-
-
 
 @Composable
 fun BottomAppBar(navController: NavController){
@@ -477,60 +104,30 @@ fun BottomAppBar(navController: NavController){
     }
 }
 
-/*
 @Composable
-fun ScaffoldExample() {
-    var presses by remember { mutableIntStateOf(0) }
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
-                title = {
-                    Text("Top app bar")
-                }
-            )
-        },
-        bottomBar = {
-            BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary,
-            ) {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    text = "Bottom app bar",
-                )
-            }
-        },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { presses++ }) {
-                Icon(Icons.Default.Add, contentDescription = "Add")
-            }
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+fun Information(valor: String, loginVM: Viewmodel){
+    Box(
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                modifier = Modifier.padding(8.dp),
-                text =
-                """
-                    This is an example of a scaffold. It uses the Scaffold composable's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
-
-                    It also contains some basic inner content, such as this text.
-
-                    You have pressed the floating action button $presses times.
-                """.trimIndent(),
+            TextField(
+                value = loginVM.InformationElection(valor),
+                onValueChange = { loginVM.ChangeElection(valor, it) },
+                label = { Text(text = valor) },
+                modifier = Modifier
+                    .padding(37.dp)
+                    .background(color = Color.White)
+                    .border(
+                        width = 2.dp,
+                        color = Color(0xFF00F5D4)
+                    ),
+                shape = RoundedCornerShape(100.dp)
             )
+            loginVM.LogElection(valor = valor)
+
         }
     }
 }
-
- */
