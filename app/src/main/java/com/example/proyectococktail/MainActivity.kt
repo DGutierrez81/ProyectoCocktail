@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectococktail.Cocktails.Model.Routes
+import com.example.proyectococktail.Cocktails.ui.Cards
 import com.example.proyectococktail.Cocktails.ui.Screen2
 import com.example.proyectococktail.Cocktails.ui.Screen3
 import com.example.proyectococktail.Cocktails.ui.ScreenHome
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.screen2.Route){Screen2(navController, viewModel)}
                         composable(Routes.screen3.Route){Screen3(navController, viewModel)}
                         composable(Routes.ScreenHome.Route){ScreenHome(navController, viewModel)}
+                        composable(Routes.Cards.Route){Cards(navController, viewModel)}
                 }
             }
         }

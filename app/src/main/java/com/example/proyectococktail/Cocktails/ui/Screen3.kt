@@ -17,18 +17,23 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.example.proyectococktail.home.Home
+import com.example.proyectococktail.home.jollyLodger
 
 @Composable
 fun Screen3(navController: NavController, viewModel: Viewmodel){
@@ -37,6 +42,100 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
     val context = LocalContext.current
 
 
+    Scaffold (
+        topBar = {
+            Column {
+                Cabecera(navController, viewModel)
+                viewModel.Head()
+            }
+            },
+        bottomBar = { Box(Modifier.fillMaxWidth().height(75.dp).background(color = Color(0xFF45413C)),
+            contentAlignment = Alignment.Center) {
+            Text(text = "ViewCocktail", fontFamily = jollyLodger, color = Color(0xFF00F5D4), fontSize = 36.sp, modifier = Modifier.clickable {  })
+        }}
+    ){innerPadding ->
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
+            .background(color = Color(0xFF45413C))) {
+            itemsIndexed(nombre) { index, item ->
+                viewModel.alcoholicOrno(nombre[0].strAlcoholic)
+                viewModel.changeCocktail(nombre[0].strDrink)
+                Column {
+                    Row(
+                        modifier = Modifier
+                            .height(100.dp)
+                            .clickable {
+                                viewModel.lightRow(show)
+                                viewModel.SaveCocktail(
+                                    idDrink = item.idDrink ?: "vacio",
+                                    strDrink = item.strDrink ?: "vacio",
+                                    strAlcoholic= item.strAlcoholic?: "vacio",
+                                    strInstructions = item.strInstructions ?: "vacio",
+                                    strDrinkThumb = item.strDrinkThumb ?: "vacio",
+                                    strList = mutableListOf(
+                                        item.strIngredient1 ?: "vacio",
+                                        item.strIngredient2 ?: "vacio",
+                                        item.strIngredient3 ?: "vacio",
+                                        item.strIngredient4 ?: "vacio",
+                                        item.strIngredient5 ?: "vacio",
+                                        item.strIngredient6 ?: "vacio",
+                                        item.strIngredient6 ?: "vacio",
+                                        item.strIngredient7 ?: "vacio",
+                                        item.strIngredient8 ?: "vacio",
+                                        item.strIngredient9 ?: "vacio",
+                                        item.strIngredient10 ?: "vacio",
+                                        item.strIngredient12 ?: "vacio",
+                                        item.strIngredient13 ?: "vacio",
+                                        item.strIngredient14 ?: "vacio",
+                                        item.strIngredient15 ?: "vacio",
+                                    )
+                                )
+                                viewModel.changeSelectedRow(item.idDrink)
+                            }
+                            .border(
+                                width = 2.dp,
+                                color = viewModel.changeColorRow(item.idDrink)
+                            )
+                    ) {
+                        Box(
+                            modifier = Modifier.width(100.dp)
+                        ) {
+                            Image(
+                                painter = rememberImagePainter(item.strDrinkThumb),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(8.dp))
+                            )
+                        }
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(100.dp)
+                                .background(viewModel.calculateBackgroundColor(index)) // Establecer el color de fondo del contenedor
+                        ) {
+                            Text(
+                                //"Ingredients:\n${item.strIngredient1}, ${item.strIngredient2}, ${item.strIngredient3},${item.strIngredient4}\n${item.strIngredient11}"
+                                text = "Ingredients:\n" + viewModel.Ingredients(item),
+                                modifier = Modifier
+                                    .padding(5.dp)
+                                    .fillMaxWidth(),
+                                textAlign = TextAlign.Center
+                            )
+                        }
+
+                    }
+                    if (viewModel.showAlert) {
+                        /*navController.navigate(Routes.screen4.Route)*/
+                        viewModel.lightRow(show)
+                    }
+                }
+            }
+        }
+    }
+
+/*
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -121,4 +220,6 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
             }
         }
     }
+
+ */
 }

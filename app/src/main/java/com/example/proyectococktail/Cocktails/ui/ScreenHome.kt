@@ -34,7 +34,7 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel){
     }
 
     Scaffold (
-        topBar = {Cuerpo(navController, viewModel)},
+        topBar = {Cabecera(navController, viewModel)},
         bottomBar = {Pie()}
     ){innerPadding ->
         Home(Modifier.padding(innerPadding))
@@ -43,7 +43,7 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel){
 
 
 @Composable
-fun Cuerpo(navController: NavController, viewModel: Viewmodel) {
+fun Cabecera(navController: NavController, viewModel: Viewmodel) {
     Box(
         Modifier
             .fillMaxWidth()
@@ -73,6 +73,7 @@ fun Cuerpo(navController: NavController, viewModel: Viewmodel) {
             Lupa(Modifier.padding(5.dp).size(30.dp, 30.dp)) {
                 viewModel.getName(viewModel.cocktailName)
                 navController.navigate(Routes.screen3.Route)
+                viewModel.changeNameCocktail("")
             }
         }
     }

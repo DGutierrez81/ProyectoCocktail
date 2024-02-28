@@ -5,5 +5,7 @@ sealed class Routes(val Route: String) {
     object screen2: Routes("screen2")
     object screen3: Routes("screen3")
 
-    object ScreenHome: Routes("screen6")
+    object ScreenHome: Routes("screen4")
+
+    object Cards: Routes("screen5")
 }

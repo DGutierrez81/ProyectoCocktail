@@ -3,6 +3,7 @@ package com.example.proyectococktail.Cocktails.Model.Response
 data class DrinksInfo(
     val idDrink: String?,
     val strDrink: String?,
+    val strAlcoholic: String?,
     val strInstructions: String?,
     val strDrinkThumb: String?,
     val strIngredient1: String?,
