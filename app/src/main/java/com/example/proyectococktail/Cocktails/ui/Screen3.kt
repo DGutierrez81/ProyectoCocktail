@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.home.Home
 import com.example.proyectococktail.home.jollyLodger
 
@@ -51,7 +52,8 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
             },
         bottomBar = { Box(Modifier.fillMaxWidth().height(75.dp).background(color = Color(0xFF45413C)),
             contentAlignment = Alignment.Center) {
-            Text(text = "ViewCocktail", fontFamily = jollyLodger, color = Color(0xFF00F5D4), fontSize = 36.sp, modifier = Modifier.clickable {  })
+            Text(text = "ViewCocktail", fontFamily = jollyLodger, color = Color(0xFF00F5D4), fontSize = 36.sp, modifier = Modifier.clickable { navController.navigate(
+                Routes.Cards.Route) })
         }}
     ){innerPadding ->
         LazyColumn(modifier = Modifier
@@ -59,8 +61,6 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
             .padding(innerPadding)
             .background(color = Color(0xFF45413C))) {
             itemsIndexed(nombre) { index, item ->
-                viewModel.alcoholicOrno(nombre[0].strAlcoholic)
-                viewModel.changeCocktail(nombre[0].strDrink)
                 Column {
                     Row(
                         modifier = Modifier
@@ -92,6 +92,8 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
                                     )
                                 )
                                 viewModel.changeSelectedRow(item.idDrink)
+                                viewModel.alcoholicOrno(item.strAlcoholic)
+                                viewModel.changeCocktail(item.strDrink)
                             }
                             .border(
                                 width = 2.dp,
