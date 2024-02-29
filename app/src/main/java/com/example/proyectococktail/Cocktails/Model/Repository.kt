@@ -27,6 +27,56 @@ class Repository @Inject constructor(private val api: CocktailsView) {
         }
     }
 
+    suspend fun vCocktailAlcoholic(): CocktailState{
+        //return api.vCocktail()
+        val response = api.getAlcoholics()
+        return if(response.isSuccessful){
+            response.body()?.getDrink() ?: CocktailState()
+        }else {
+            CocktailState()
+        }
+    }
+
+    suspend fun vCocktailNoAlcoholic(): CocktailState{
+        //return api.vCocktail()
+        val response = api.getNoAlcoholics()
+        return if(response.isSuccessful){
+            response.body()?.getDrink() ?: CocktailState()
+        }else {
+            CocktailState()
+        }
+    }
+
+    suspend fun vCocktailOrdinary(): CocktailState{
+        //return api.vCocktail()
+        val response = api.getOrdinary()
+        return if(response.isSuccessful){
+            response.body()?.getDrink() ?: CocktailState()
+        }else {
+            CocktailState()
+        }
+    }
+
+    suspend fun vCocktailChampagne(): CocktailState{
+        //return api.vCocktail()
+        val response = api.getGlassChampagne()
+        return if(response.isSuccessful){
+            response.body()?.getDrink() ?: CocktailState()
+        }else {
+            CocktailState()
+        }
+    }
+
+    suspend fun vCocktailGlass(): CocktailState{
+        //return api.vCocktail()
+        val response = api.getGlassCocktail()
+        return if(response.isSuccessful){
+            response.body()?.getDrink() ?: CocktailState()
+        }else {
+            CocktailState()
+        }
+    }
+
 
 
     private fun Cocktail.getDrink(): CocktailState{
@@ -39,6 +89,7 @@ class Repository @Inject constructor(private val api: CocktailsView) {
         return drinkState(
             idDrink = this.idDrink ?: "vacio",
             strDrink = this.strDrink ?: "vacio",
+            strAlcoholic =this.strAlcoholic ?: "vacio",
             strInstructions = this.strInstructions ?: "vacio",
             strDrinkThumb = this.strDrinkThumb ?: "vacio",
             strIngredient1 = this.strIngredient1 ?: "vacio",

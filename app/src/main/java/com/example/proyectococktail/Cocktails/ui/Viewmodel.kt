@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.proyectococktail.Cocktails.Domain.AlcoholicsCocktail
 import com.example.proyectococktail.Cocktails.Domain.NameUseCase
 import com.example.proyectococktail.Cocktails.Domain.RandomCocktail
 import com.example.proyectococktail.Cocktails.Model.CocktailUser
 import com.example.proyectococktail.Cocktails.Model.Response.User
-import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.Cocktails.ui.State.drinkState
 import com.example.proyectococktail.basilkeyoutline.BasilKeyOutline
 import com.example.proyectococktail.complogin.CompLogIn
@@ -34,7 +34,6 @@ import com.example.proyectococktail.eiuser.EiUser
 import com.example.proyectococktail.fluentemojihighcontrastenvelope.FluentEmojiHighContrastEnvelope
 import com.example.proyectococktail.home.jollyLodger
 import com.example.proyectococktail.keygreen.KeyGreen
-import com.example.proyectococktail.signupdecision.SignUpdecision
 import com.example.proyectococktail.sobregreen.SobreGreen
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -51,7 +50,7 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, private val randomCocktail: RandomCocktail): ViewModel() {
+class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, private val randomCocktail: RandomCocktail, private val alcoholicsCocktail: AlcoholicsCocktail): ViewModel() {
     private val auth: FirebaseAuth = Firebase.auth
     private val firestore: FirebaseFirestore = Firebase.firestore
     //private val _games = MutableStateFlow<List<GameInfoState>>(emptyList())
@@ -65,6 +64,9 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     var _ingredient by mutableStateOf("")
         private set
 
+    var _ingredient2 by mutableStateOf("")
+        private set
+
     var pantallasI by mutableStateOf(0)
         private set
 
@@ -74,6 +76,9 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     val show: MutableState<Boolean> = _show
 
     var email by mutableStateOf("")
+        private set
+
+    var number by mutableStateOf(0)
         private set
 
     var password by mutableStateOf("")
@@ -116,6 +121,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    fun vCocktailAlcoholic(){
+        viewModelScope.launch {
+            _nombre.value = alcoholicsCocktail().drinks
+        }
+    }
+
     fun IngredientsUser(ingredientes: CocktailUser): String{
         _ingredient = ""
         for(ingrediente in ingredientes.strList!!){
@@ -137,6 +148,18 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         return _ingredient
     }
 
+    fun IngredientsCard(ingredientes: drinkState): String{
+        _ingredient2 = ""
+        val lista = mutableListOf<String>(ingredientes.strIngredient1?: "vacio", ingredientes.strIngredient2?: "vacio", ingredientes.strIngredient3?: "vacio", ingredientes.strIngredient4?: "vacio",
+            ingredientes.strIngredient5?: "vacio", ingredientes.strIngredient6?: "vacio", ingredientes.strIngredient7?: "vacio", ingredientes.strIngredient8?: "vacio",
+            ingredientes.strIngredient9?: "vacio", ingredientes.strIngredient10?: "vacio", ingredientes.strIngredient11?: "vacio", ingredientes.strIngredient12?: "vacio",
+            ingredientes.strIngredient3?: "vacio", ingredientes.strIngredient14?: "vacio", ingredientes.strIngredient15?: "vacio")
+        for(ingrediente in lista){
+            if(ingrediente.equals("vacio")) break else _ingredient2 += "$ingrediente "
+        }
+        return _ingredient2
+    }
+
 
 
     fun calculateBackgroundColor(index: Int): Color {
@@ -150,6 +173,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
                      strInstructions: String,
                      strDrinkThumb: String,
                      strList: MutableList<String>){
+        listaIngredientes = mutableListOf()
         val email = auth.currentUser?.email
         for(ingrediente in strList){
             if(ingrediente.equals("vacio")) continue else listaIngredientes.add(ingrediente)
@@ -224,6 +248,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    //newCocktail: CocktailUser
     fun saveNewCocktail(onSuccess: () -> Unit) {
         val email = auth.currentUser?.email
 
@@ -318,12 +343,22 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
     @Composable
-    fun Head()
+    fun Head(number: Int)
         {
             Column(Modifier.fillMaxWidth().background(color = Color(0xFF45413C)),
             horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = alochol, fontFamily = jollyLodger, fontSize = 32.sp, color = Color(0xFF00F5D4))
-            Text(text = cocktail, fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
+            //Text(text = cocktail, fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
+                when (number){
+                    1 -> {Text(text = "Glass Cocktail", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))}
+                    2 -> {Text(text = "Glass Champagne", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))}
+                    3 -> {Text(text = "Random Drinks", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))}
+                    4 -> Text(text = "Ordinary Drinks", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
+                    5 -> Text(text = "Alcoholics", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
+                    6 -> Text(text = "No Alcoholics", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
+                    7 -> {Text(text = "Favorites", fontFamily = jollyLodger, fontSize = 32.sp, color = Color(0xFFFF01FB))}
+                }
+                Text(text = cocktail, fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
         }
     }
 
@@ -382,6 +417,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
      */
     fun changePassword(password: String) {
         this.password = password
+    }
+
+    fun changeScreen(screen: Int) {
+        this.number = screen
     }
 
     fun changeNameCocktail(name:String){

@@ -37,7 +37,11 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel){
         topBar = {Cabecera(navController, viewModel)},
         bottomBar = {Pie()}
     ){innerPadding ->
-        Home(Modifier.padding(innerPadding))
+        Home(Modifier.padding(innerPadding), {viewModel.getRandom()
+            viewModel.changeScreen(3)
+            navController.navigate(Routes.screen3.Route)}, {}, {}, {}, {viewModel.vCocktailAlcoholic()
+            viewModel.changeScreen(5)
+            navController.navigate(Routes.screen3.Route)})
     }
 }
 

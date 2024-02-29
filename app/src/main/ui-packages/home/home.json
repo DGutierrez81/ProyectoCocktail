@@ -5,7 +5,7 @@
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
     "node": "96:1521",
-    "version": "5242254931",
+    "version": "5246159662",
     "component-id": "e47cf343bcc99359cd9db8ccbd361de462e903e7"
   },
   "default": "Home",
@@ -38,11 +38,11 @@
       },
       {
         "type": "group",
-        "id": "tercera fila"
+        "id": "Random"
       },
       {
         "type": "group",
-        "id": "Component 17"
+        "id": "Ordinary"
       },
       {
         "type": "group",
@@ -70,11 +70,11 @@
       },
       {
         "type": "group",
-        "id": "Primera fila"
+        "id": "GlassCoc"
       },
       {
         "type": "group",
-        "id": "Component 18"
+        "id": "GlassCham"
       },
       {
         "type": "vector",
@@ -94,11 +94,11 @@
       },
       {
         "type": "group",
-        "id": "Segunda fila"
+        "id": "Alcoholis"
       },
       {
         "type": "group",
-        "id": "Component 19"
+        "id": "NoAlcoholics"
       },
       {
         "type": "group",
@@ -176,24 +176,14 @@
           },
           {
             "id": "Logo (4) 1",
-            "alignment": {
-              "horizontal": {
-                "attachment": "start",
-                "offset": "6.5"
-              },
-              "vertical": {
-                "attachment": "start",
-                "offset": "0.0"
-              }
-            },
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "fixed",
-                "value": "373.0"
+                "value": "360.0"
               },
               "height-constraints": {
                 "sizing-mode": "fixed",
-                "value": "370.0"
+                "value": "357.10455322265625"
               }
             },
             "image-content": "logo_4_1.png",
@@ -211,8 +201,8 @@
             },
             "arrangement": "row",
             "children": [
-              "Segunda fila",
-              "Component 19"
+              "Alcoholis",
+              "NoAlcoholics"
             ],
             "item-spacing": "80.0",
             "clip-content": "false"
@@ -240,10 +230,10 @@
             },
             "arrangement": "row",
             "children": [
-              "tercera fila",
-              "Component 17"
+              "Random",
+              "Ordinary"
             ],
-            "item-spacing": "52.0",
+            "item-spacing": "55.0",
             "clip-content": "false"
           },
           {
@@ -268,15 +258,15 @@
             },
             "arrangement": "row",
             "children": [
-              "Primera fila",
-              "Component 18"
+              "GlassCoc",
+              "GlassCham"
             ],
             "item-spacing": "50.0",
             "clip-content": "false"
           },
           {
-            "id": "tercera fila",
-            "tap-handler": "$on tercera fila tapped",
+            "id": "Random",
+            "tap-handler": "$on Random tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -294,8 +284,8 @@
             "clip-content": "false"
           },
           {
-            "id": "Component 17",
-            "tap-handler": "$on Component 17 tapped",
+            "id": "Ordinary",
+            "tap-handler": "$on Ordinary tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -341,7 +331,7 @@
               "saturation": "1.0",
               "value": "0.9607843137254902"
             },
-            "text-content": "favorites drinks",
+            "text-content": "random  drinks  ",
             "overflow": "visible",
             "text-align": "left",
             "text-size": "20.0",
@@ -412,12 +402,12 @@
             "typeface": "Jolly Lodger"
           },
           {
-            "id": "Primera fila",
+            "id": "GlassCoc",
             "padding": {
               "top": "3.0",
               "bottom": "3.0"
             },
-            "tap-handler": "$on Primera fila tapped",
+            "tap-handler": "$on GlassCoc tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -437,8 +427,8 @@
             "clip-content": "false"
           },
           {
-            "id": "Component 18",
-            "tap-handler": "$on Component 18 tapped",
+            "id": "GlassCham",
+            "tap-handler": "$on GlassCham tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -516,8 +506,8 @@
             "typeface": "Jolly Lodger"
           },
           {
-            "id": "Segunda fila",
-            "tap-handler": "$on Segunda fila tapped",
+            "id": "Alcoholis",
+            "tap-handler": "$on Alcoholis tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -536,11 +526,12 @@
             "clip-content": "false"
           },
           {
-            "id": "Component 19",
-            "tap-handler": "$on Component 19 tapped",
+            "id": "NoAlcoholics",
+            "tap-handler": "$on NoAlcoholics tapped",
             "size-constraints": {
               "width-constraints": {
-                "sizing-mode": "shrink"
+                "sizing-mode": "fixed",
+                "value": "85.0"
               },
               "height-constraints": {
                 "sizing-mode": "shrink"
@@ -552,7 +543,7 @@
               "No conduce",
               "no alcoholics"
             ],
-            "item-spacing": "30.0",
+            "item-spacing": "12.0",
             "clip-content": "false"
           },
           {
@@ -738,32 +729,32 @@
     }
   },
   "parameters": {
-    "on tercera fila tapped": {
+    "on Random tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""
     },
-    "on Component 17 tapped": {
+    "on Ordinary tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""
     },
-    "on Primera fila tapped": {
+    "on GlassCoc tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""
     },
-    "on Component 18 tapped": {
+    "on GlassCham tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""
     },
-    "on Segunda fila tapped": {
+    "on Alcoholis tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""
     },
-    "on Component 19 tapped": {
+    "on NoAlcoholics tapped": {
       "data-type": "void-callback",
       "required": false,
       "description": ""

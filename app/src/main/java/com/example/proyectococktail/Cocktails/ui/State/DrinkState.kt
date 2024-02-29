@@ -3,7 +3,7 @@ package com.example.proyectococktail.Cocktails.ui.State
 data class drinkState(
     val idDrink: String = "",
     val strDrink: String = "",
-    val strAlcoholic: String = "",
+    val strAlcoholic: String,
     val strInstructions: String? = "",
     val strDrinkThumb: String? = "",
     val strIngredient1: String? = "",

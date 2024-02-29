@@ -1,6 +1,5 @@
 package com.example.proyectococktail.Cocktails.ui
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +31,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.example.proyectococktail.Cocktails.Model.Routes
-import com.example.proyectococktail.home.Home
 import com.example.proyectococktail.home.jollyLodger
 
 @Composable
@@ -47,7 +44,7 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
         topBar = {
             Column {
                 Cabecera(navController, viewModel)
-                viewModel.Head()
+                viewModel.Head(viewModel.number)
             }
             },
         bottomBar = { Box(Modifier.fillMaxWidth().height(75.dp).background(color = Color(0xFF45413C)),
@@ -80,7 +77,6 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
                                         item.strIngredient4 ?: "vacio",
                                         item.strIngredient5 ?: "vacio",
                                         item.strIngredient6 ?: "vacio",
-                                        item.strIngredient6 ?: "vacio",
                                         item.strIngredient7 ?: "vacio",
                                         item.strIngredient8 ?: "vacio",
                                         item.strIngredient9 ?: "vacio",
@@ -91,6 +87,7 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
                                         item.strIngredient15 ?: "vacio",
                                     )
                                 )
+                                viewModel.IngredientsCard(item)
                                 viewModel.changeSelectedRow(item.idDrink)
                                 viewModel.alcoholicOrno(item.strAlcoholic)
                                 viewModel.changeCocktail(item.strDrink)
