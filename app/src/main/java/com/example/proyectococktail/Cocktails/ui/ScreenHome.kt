@@ -48,7 +48,7 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel) {
     // para las pantallas, incluyendo una barra superior y una barra inferior.
     Scaffold(
         topBar = { Cabecera(navController, viewModel) },
-        bottomBar = { Pie(navController) }
+        bottomBar = { Pie(navController, viewModel) }
     ) { innerPadding ->
         // Home es otro componente definido en algún otro lugar, se pasa con modificador de relleno y tamaño máximo.
         Home(
@@ -156,7 +156,7 @@ fun Cabecera(navController: NavController, viewModel: Viewmodel) {
  * @param navController el controlador de navegación utilizado para navegar entre pantallas.
  */
 @Composable
-fun Pie(navController: NavController) {
+fun Pie(navController: NavController, viewModel: Viewmodel) {
     // El pie está contenido en un Box con ancho máximo y altura fija.
     Box(
         Modifier
@@ -166,6 +166,7 @@ fun Pie(navController: NavController) {
         // Dentro del Box, se encuentra el componente SeefaoritesPie.
         SeefaoritesPie(Modifier.fillMaxWidth()) {
             // Al hacer clic en el elemento relacionado con favoritos, se navega a la pantalla correspondiente.
+            viewModel.changeScreen(7)
             navController.navigate(Routes.ViewConktailUser.Route)
         }
     }

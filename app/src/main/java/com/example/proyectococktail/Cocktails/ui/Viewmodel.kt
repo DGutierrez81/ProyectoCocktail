@@ -537,9 +537,6 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
-    fun closeAlert(){
-        showAlert = false
-    }
 
     /**
      * Actualiza el email del usuario.
