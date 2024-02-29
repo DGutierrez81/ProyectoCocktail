@@ -35,13 +35,35 @@ fun ScreenHome(navController: NavController, viewModel: Viewmodel){
 
     Scaffold (
         topBar = {Cabecera(navController, viewModel)},
-        bottomBar = {Pie()}
+        bottomBar = {Pie(navController)}
     ){innerPadding ->
         Home(Modifier.padding(innerPadding), {viewModel.getRandom()
             viewModel.changeScreen(3)
-            navController.navigate(Routes.screen3.Route)}, {}, {}, {}, {viewModel.vCocktailAlcoholic()
+            navController.navigate(Routes.cocktails.Route)
+            viewModel.Clean()}, {
+            viewModel.getOrdinary()
+            viewModel.changeScreen(4)
+            navController.navigate(Routes.cocktails.Route)
+            viewModel.Clean()
+        }, {
+            viewModel.getCocktailGlass()
+            viewModel.changeScreen(1)
+            navController.navigate(Routes.cocktails.Route)
+            viewModel.Clean()
+        }, {
+            viewModel.getGlassChamp()
+            viewModel.changeScreen(2)
+            navController.navigate(Routes.cocktails.Route)
+            viewModel.Clean()
+        }, {
+                viewModel.vCocktailAlcoholic()
             viewModel.changeScreen(5)
-            navController.navigate(Routes.screen3.Route)})
+            navController.navigate(Routes.cocktails.Route)
+            viewModel.Clean()},
+            {viewModel.getNoAlcoholic()
+                viewModel.changeScreen(6)
+                navController.navigate(Routes.cocktails.Route)
+                viewModel.Clean()})
     }
 }
 
@@ -76,20 +98,20 @@ fun Cabecera(navController: NavController, viewModel: Viewmodel) {
 
             Lupa(Modifier.padding(5.dp).size(30.dp, 30.dp)) {
                 viewModel.getName(viewModel.cocktailName)
-                navController.navigate(Routes.screen3.Route)
-                viewModel.changeNameCocktail("")
+                navController.navigate(Routes.cocktails.Route)
+                viewModel.Clean()
             }
         }
     }
 }
 
 @Composable
-fun Pie(){
+fun Pie(navController: NavController){
     Box(
         Modifier
             .fillMaxWidth()
             .height(75.dp)
     ) {
-        SeefaoritesPie(Modifier.fillMaxWidth()) {}
+        SeefaoritesPie(Modifier.fillMaxWidth()) {navController.navigate(Routes.ViewConktailUser.Route)}
     }
 }

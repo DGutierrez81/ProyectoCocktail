@@ -24,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,10 +33,10 @@ import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.home.jollyLodger
 
 @Composable
-fun Screen3(navController: NavController, viewModel: Viewmodel){
-    val nombre by viewModel.nombre.collectAsState()
+fun Cocktails(navController: NavController, viewModel: Viewmodel){
+    val listCocktail by viewModel.listCocktail.collectAsState()
     val show = viewModel.show.value
-    val context = LocalContext.current
+
 
 
     Scaffold (
@@ -57,7 +56,7 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
             .fillMaxSize()
             .padding(innerPadding)
             .background(color = Color(0xFF45413C))) {
-            itemsIndexed(nombre) { index, item ->
+            itemsIndexed(listCocktail) { index, item ->
                 Column {
                     Row(
                         modifier = Modifier
@@ -65,9 +64,9 @@ fun Screen3(navController: NavController, viewModel: Viewmodel){
                             .clickable {
                                 viewModel.lightRow(show)
                                 viewModel.SaveCocktail(
-                                    idDrink = item.idDrink ?: "vacio",
-                                    strDrink = item.strDrink ?: "vacio",
-                                    strAlcoholic= item.strAlcoholic?: "vacio",
+                                    idDrink = item.idDrink,
+                                    strDrink = item.strDrink,
+                                    strAlcoholic= item.strAlcoholic,
                                     strInstructions = item.strInstructions ?: "vacio",
                                     strDrinkThumb = item.strDrinkThumb ?: "vacio",
                                     strList = mutableListOf(

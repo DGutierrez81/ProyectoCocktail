@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
-import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.home.jollyLodger
 
 @Composable
@@ -78,14 +76,14 @@ fun Cards(navController: NavController, viewModel: Viewmodel){
                         modifier = Modifier.background(Color.White)
                     ){
                         item{
-                            viewModel.drink.strDrink?.let {
+                            viewModel.drink.strDrink.let {
                                 Text(text = it,
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(5.dp),
                                     textAlign = TextAlign.Center)
                             }
-                            viewModel.drink.strInstructions?.let {
+                            viewModel.drink.strInstructions.let {
                                 Text(text = it,
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -102,54 +100,6 @@ fun Cards(navController: NavController, viewModel: Viewmodel){
                 }
             }
 
-        }
-/*
-
-Modifier.background(color = Color(0xFF45413C))
-        Card(
-            border = BorderStroke(2.dp, Color.Red),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(500.dp)
-
-        ){
-            Image(
-                painter = rememberImagePainter(viewModel.drink.strDrinkThumb),
-                contentDescription = null,
-                modifier = Modifier.fillMaxWidth()
-                    .height(300.dp),
-                contentScale = ContentScale.Crop
-            )
-
-            LazyColumn(
-                modifier = Modifier.background(Color.White)
-            ){
-                item{
-                    viewModel.drink.strDrink?.let {
-                        Text(text = it,
-                            modifier = Modifier.fillMaxWidth()
-                                .padding(5.dp),
-                            textAlign = TextAlign.Center)
-                    }
-                    viewModel.drink.strInstructions?.let {
-                        Text(text = it,
-                            modifier = Modifier.fillMaxWidth()
-                                .padding(5.dp),
-                            textAlign = TextAlign.Center)
-                    }
-                    Text(text = "Ingredients:\n${viewModel._ingredient}",
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(5.dp),
-                        textAlign = TextAlign.Center)
-                }
-            }
-        }
-
- */
-
-        Button(onClick = { navController.navigate(Routes.ScreenHome.Route)
-            viewModel.mostrar()}) {
-            Text(text = "volver")
         }
     }
 }

@@ -81,7 +81,7 @@ class Repository @Inject constructor(private val api: CocktailsView) {
 
     private fun Cocktail.getDrink(): CocktailState{
         return CocktailState(
-            drinks = this.drinks.map { it.getDrinkState() }
+            drinks = this.drinks?.map { it.getDrinkState() }
         )
     }
 

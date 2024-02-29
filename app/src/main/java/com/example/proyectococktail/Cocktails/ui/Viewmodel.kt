@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -22,14 +21,16 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.proyectococktail.Cocktails.Domain.AlcoholicsCocktail
+import com.example.proyectococktail.Cocktails.Domain.CocktailGlass
+import com.example.proyectococktail.Cocktails.Domain.GlassCham
 import com.example.proyectococktail.Cocktails.Domain.NameUseCase
+import com.example.proyectococktail.Cocktails.Domain.NoAlcoholics
+import com.example.proyectococktail.Cocktails.Domain.Ordinary
 import com.example.proyectococktail.Cocktails.Domain.RandomCocktail
-import com.example.proyectococktail.Cocktails.Model.CocktailUser
 import com.example.proyectococktail.Cocktails.Model.Response.User
+import com.example.proyectococktail.Cocktails.ui.State.CocktailUserState
 import com.example.proyectococktail.Cocktails.ui.State.drinkState
 import com.example.proyectococktail.basilkeyoutline.BasilKeyOutline
-import com.example.proyectococktail.complogin.CompLogIn
-import com.example.proyectococktail.compsignup.CompSignUp
 import com.example.proyectococktail.eiuser.EiUser
 import com.example.proyectococktail.fluentemojihighcontrastenvelope.FluentEmojiHighContrastEnvelope
 import com.example.proyectococktail.home.jollyLodger
@@ -50,16 +51,16 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, private val randomCocktail: RandomCocktail, private val alcoholicsCocktail: AlcoholicsCocktail): ViewModel() {
+class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, private val randomCocktail: RandomCocktail, private val alcoholicsCocktail: AlcoholicsCocktail,
+    private val noAlcoholics: NoAlcoholics, private val ordinary: Ordinary, private val glassChamp: GlassCham, private val cocktailGlass: CocktailGlass): ViewModel() {
     private val auth: FirebaseAuth = Firebase.auth
     private val firestore: FirebaseFirestore = Firebase.firestore
-    //private val _games = MutableStateFlow<List<GameInfoState>>(emptyList())
-    //val games: StateFlow<List<GameInfoState>> = _games.asStateFlow()
-    private val _nombre = MutableStateFlow<List<drinkState>>(emptyList())
-    val nombre: StateFlow<List<drinkState>> = _nombre.asStateFlow()
 
-    private val _cocktailData = MutableStateFlow<List<CocktailUser>>(emptyList())
-    val cocktailData: StateFlow<List<CocktailUser>> = _cocktailData
+    private val _listCocktail = MutableStateFlow<List<drinkState>>(emptyList())
+    val listCocktail: StateFlow<List<drinkState>> = _listCocktail.asStateFlow()
+
+    private val _cocktailData = MutableStateFlow<List<CocktailUserState>>(emptyList())
+    val cocktailData: StateFlow<List<CocktailUserState>> = _cocktailData
 
     var _ingredient by mutableStateOf("")
         private set
@@ -87,7 +88,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     var userName by mutableStateOf("")
         private set
 
-    var listaIngredientes by mutableStateOf<MutableList<String>>(mutableListOf())
+    private var listaIngredientes by mutableStateOf<MutableList<String>>(mutableListOf())
         private set
 
     var cocktailName by mutableStateOf("")
@@ -98,7 +99,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
 
     var alochol by mutableStateOf("")
         private set
-    var drink by mutableStateOf(CocktailUser())
+    var drink by mutableStateOf(CocktailUserState())
         private set
 
     var showAlert by mutableStateOf(false)
@@ -111,31 +112,76 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
 
     fun getName(name: String){
         viewModelScope.launch {
-            _nombre.value = nameUseCase(name).drinks
+            _listCocktail.value = nameUseCase(name).drinks?: mutableListOf()
         }
     }
 
     fun getRandom(){
         viewModelScope.launch {
-            _nombre.value = randomCocktail().drinks
+            _listCocktail.value = randomCocktail().drinks?: mutableListOf()
         }
     }
 
     fun vCocktailAlcoholic(){
         viewModelScope.launch {
-            _nombre.value = alcoholicsCocktail().drinks
+            _listCocktail.value = alcoholicsCocktail().drinks?: mutableListOf()
         }
     }
 
-    fun IngredientsUser(ingredientes: CocktailUser): String{
+    fun getNoAlcoholic(){
+        viewModelScope.launch {
+            _listCocktail.value = noAlcoholics().drinks?: mutableListOf()
+        }
+    }
+
+    fun getOrdinary(){
+        viewModelScope.launch {
+            _listCocktail.value = ordinary().drinks?: mutableListOf()
+        }
+    }
+
+    fun getGlassChamp(){
+        viewModelScope.launch {
+            _listCocktail.value = glassChamp().drinks?: mutableListOf()
+        }
+    }
+
+    fun getCocktailGlass(){
+        viewModelScope.launch {
+            _listCocktail.value = cocktailGlass().drinks?: mutableListOf()
+        }
+    }
+
+    /**
+     * Devuelve los ingredientes de la lista de cockteles del usuario.
+     * @param ingredientes ingredientes de lo que consta la lista.
+     */
+    fun IngredientsUser(ingredientes: CocktailUserState): String{
         _ingredient = ""
-        for(ingrediente in ingredientes.strList!!){
+        for(ingrediente in ingredientes.strList){
             if(ingrediente.equals("vacio")) break else _ingredient += "$ingrediente "
         }
         return _ingredient
     }
 
+    /**
+     * Devuelve los ingredientes de la lista de cockteles del usuario para mostrarlos en la card.
+     * @param ingredientes ingredientes de lo que consta la lista.
+     */
+    fun IngredientsUserCard(ingredientes: CocktailUserState): String{
+        _ingredient2 = ""
+        for(ingrediente in ingredientes.strList){
+            if(ingrediente.equals("vacio")) break else _ingredient2 += "$ingrediente "
+        }
+        return _ingredient2
+    }
 
+
+    /**
+     * Devuelve los ingredientes de la lista de cockteles.
+     * @param ingredientes ingredientes de lo que consta la lista.
+     */
+    
     fun Ingredients(ingredientes: drinkState): String{
         _ingredient = ""
         val lista = mutableListOf<String>(ingredientes.strIngredient1?: "vacio", ingredientes.strIngredient2?: "vacio", ingredientes.strIngredient3?: "vacio", ingredientes.strIngredient4?: "vacio",
@@ -147,6 +193,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
         return _ingredient
     }
+
+
+    /**
+     * Devuelve los ingredientes de la lista de cockteles para mostrarlos en la card.
+     * @param ingredientes ingredientes de lo que consta la lista.
+     */
 
     fun IngredientsCard(ingredientes: drinkState): String{
         _ingredient2 = ""
@@ -161,12 +213,19 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Si la fila es par aparece de distinto color para marcar la selección.
+     * @param index Recibe el indice para realizar el cálculo.
+     */
 
     fun calculateBackgroundColor(index: Int): Color {
         return if (index % 2 == 0) Color(0xFFF9EBE0) else Color.White
     }
 
 
+    /**
+     * Permite almacenar los datos del cocktail marcado por si se quiere almacenar en la base de datos y para mostrarlo en la card.
+     */
     fun SaveCocktail(idDrink: String,
                      strDrink: String,
                      strAlcoholic: String,
@@ -178,7 +237,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         for(ingrediente in strList){
             if(ingrediente.equals("vacio")) continue else listaIngredientes.add(ingrediente)
         }
-        drink = CocktailUser(email.toString(), idDrink, strDrink, strAlcoholic, strInstructions, strDrinkThumb, listaIngredientes)
+        drink = CocktailUserState(email.toString(), idDrink, strDrink, strAlcoholic, strInstructions, strDrinkThumb, listaIngredientes)
     }
 
     fun mostrar(){
@@ -186,11 +245,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Función encargada de realizar el log in y autentificar el usuario.
+     */
     fun login(onSuccess: () -> Unit){
         viewModelScope.launch {
             try {
-                // DCS - Utiliza el servicio de autenticación de Firebase para validar al usuario
-                // por email y contraseña
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -207,6 +267,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Función encargada de guardar en la base de datos el usuario.
+     * @param username nombre de usuario.
+     */
     private fun saveUser(username: String){
         val id = auth.currentUser?.uid
         val email = auth.currentUser?.email
@@ -226,6 +290,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Función encargada de crear un usuario nuevo.
+     * @param onSucces función lambda que nos dirige a la pantalla de home de la aplicación.
+     */
     fun createUser(onSuccess: () -> Unit){
         viewModelScope.launch {
             try {
@@ -234,7 +302,6 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // DCS - Si se realiza con éxito, almacenamos el usuario en la colección "Users"
                             saveUser(userName)
                             onSuccess()
                         } else {
@@ -248,9 +315,8 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
-    //newCocktail: CocktailUser
+
     fun saveNewCocktail(onSuccess: () -> Unit) {
-        val email = auth.currentUser?.email
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -286,22 +352,21 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    /**
+     * Busca un cocktail de la base de datos para mostrarlo
+     */
     fun fetchCoctail() {
         val email = auth.currentUser?.email
-
-        // DCS - addSnapshotListener ya trae todas las funciones necesarias para la concurrencia
-        // de datos y es asíncrono, por lo que no es necesario introducir el viewModelScope.
-        // Ya lleva incluida todas las corrutinas necesarias...
         firestore.collection("Cocktails")
             .whereEqualTo("emailUser", email.toString())
             .addSnapshotListener { querySnapshot, error ->
                 if (error != null) {
                     return@addSnapshotListener
                 }
-                val documents = mutableListOf<CocktailUser>()
+                val documents = mutableListOf<CocktailUserState>()
                 if (querySnapshot != null) {
                     for (document in querySnapshot) {
-                        val myDocument = document.toObject(CocktailUser::class.java).copy(idDrink = document.id)
+                        val myDocument = document.toObject(CocktailUserState::class.java).copy(idDrink = document.id)
                         documents.add(myDocument)
                     }
                 }
@@ -314,6 +379,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Función que lleva a la pantalla de registro o de iniciar sesión
+     * @param screen Depende del número elige una opción u otra.
+     */
     @Composable
     fun LogOrsign(screen: Int){
         when(screen){
@@ -321,27 +390,33 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .height(227.dp)
+                        .background(color = Color(0xFF45413C))
+                        .padding(40.dp),
+                    contentAlignment = Alignment.Center
+
                 ) {
-                    CompSignUp(
-                        Modifier.fillMaxWidth()
-                    )
+                    Text(text = "Sing Up", fontFamily = jollyLodger, fontSize = 96.sp, color = Color(0xFF00F5D4))
                 }
             }
             2 -> {
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .height(227.dp)
+                        .background(color = Color(0xFF45413C))
+                        .padding(40.dp),
+                    contentAlignment = Alignment.Center
+
                 ) {
-                    CompLogIn(
-                        Modifier.fillMaxWidth()
-                    )
+                    Text(text = "Log In", fontFamily = jollyLodger, fontSize = 96.sp, color = Color(0xFFFF01FB))
                 }
             }
         }
     }
 
+    /**
+     * Dependiendo del tipo de cocktail, muestra una información diferente en la cabecera.
+     * @param number trae la información de la pantalla a eligir.
+     */
     @Composable
     fun Head(number: Int)
         {
@@ -362,8 +437,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    /**
+     * Elección del logo de las pantallas de login y sign.
+     * @param valor dependiendo del valor se mostrará el icono correspondiente.
+     */
     @Composable
-    fun LogElection(valor: String): Unit {
+    fun LogElection(valor: String) {
         return when (valor) {
             "userName" -> EiUser(Modifier.size(50.dp, 50.dp))
             "email" -> FluentEmojiHighContrastEnvelope(Modifier.size(50.dp, 50.dp))
@@ -374,8 +453,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    /**
+     * Se elige hacia que variable va a ir el contenido.
+     * @param valor indica hacia que variable irá el contenido.
+     */
     @Composable
-    fun InformationElection(valor: String): String{
+    fun informationElection(valor: String): String{
         return when (valor) {
             "userName" -> userName
             "email" -> email
@@ -386,7 +469,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
-
+    /**
+     * Nos dirige a la función que hace posible actualizar el contenido de la variable
+     * @param valor indica hacia que variable irá el contenido.
+     */
     fun ChangeElection(valor: String, cambio: String){
         when (valor) {
             "userName" -> changeUserName(cambio)
@@ -454,5 +540,12 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
 
     fun changeColorRow(row: String?): Color {
         return if(_selectedRowId == row) Color.Red else Color.White
+    }
+
+    fun Clean(){
+        alcoholicOrno("")
+        changeSelectedRow("")
+        changeCocktail("")
+        changeNameCocktail("")
     }
 }
