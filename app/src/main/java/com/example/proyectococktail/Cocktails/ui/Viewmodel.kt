@@ -50,6 +50,28 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 
+
+/**
+ * ViewModel responsable de la lógica de la aplicación.
+ *
+ * @property auth Instancia de FirebaseAuth utilizada para las operaciones de autenticación.
+ * @property email Email del usuario, utilizado para el inicio de sesión y registro.
+ * @property password Contraseña del usuario, utilizada para el inicio de sesión y registro.
+ * @property userName Nombre de usuario, utilizado solo en el proceso de registro.
+ * @property fierestore Instancia de FirebaseFirestore utilizada para el servico de la base de datos.
+ * @property _ingredient String de ingredientes para mostrar en las filas.
+ * @property _ingredient2 String de ingredientes para mostrar en las cards.
+ * @property PantallasI Int que indica que id tiene la pantalla de inicio a eligir.
+ * @property _show Boolean para mostrar la fila marcada.
+ * @property number Indica el id del texto de cabecera.
+ * @property listaIngredientes Contiene la lista de ingredientes del objeto marcado listo para almacenar.
+ * @property cocktailName Nombre del cocktail.
+ * @property cocktail Nombre del cocktail proveniente de la API.
+ * @property alcohol Indica si contiene alcohol o no.
+ * @property drink Contiene el cocktail del usuario.
+ * @property showAlert Boolean que permite ver la fila marcada.
+ * @property _selectedRowId Contiene el id de la fila para poder cambiar de color.
+ */
 @HiltViewModel
 class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, private val randomCocktail: RandomCocktail, private val alcoholicsCocktail: AlcoholicsCocktail,
     private val noAlcoholics: NoAlcoholics, private val ordinary: Ordinary, private val glassChamp: GlassCham, private val cocktailGlass: CocktailGlass): ViewModel() {
@@ -97,7 +119,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     var cocktail by mutableStateOf("")
         private set
 
-    var alochol by mutableStateOf("")
+    var alcohol by mutableStateOf("")
         private set
     var drink by mutableStateOf(CocktailUserState())
         private set
@@ -106,9 +128,13 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         private set
 
 
+
     var _selectedRowId by mutableStateOf<String?>(null)
         private set
 
+    /**
+     * Obtiene la información de la api.
+     */
 
     fun getName(name: String){
         viewModelScope.launch {
@@ -116,23 +142,37 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    /**
+     * Obtiene la información de la api.
+     */
+
     fun getRandom(){
         viewModelScope.launch {
             _listCocktail.value = randomCocktail().drinks?: mutableListOf()
         }
     }
 
+    /**
+     * Obtiene la información de la api.
+     */
     fun vCocktailAlcoholic(){
         viewModelScope.launch {
             _listCocktail.value = alcoholicsCocktail().drinks?: mutableListOf()
         }
     }
 
+    /**
+     * Obtiene la información de la api.
+     */
     fun getNoAlcoholic(){
         viewModelScope.launch {
             _listCocktail.value = noAlcoholics().drinks?: mutableListOf()
         }
     }
+
+    /**
+     * Obtiene la información de la api.
+     */
 
     fun getOrdinary(){
         viewModelScope.launch {
@@ -140,12 +180,18 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         }
     }
 
+    /**
+     * Obtiene la información de la api.
+     */
     fun getGlassChamp(){
         viewModelScope.launch {
             _listCocktail.value = glassChamp().drinks?: mutableListOf()
         }
     }
 
+    /**
+     * Obtiene la información de la api.
+     */
     fun getCocktailGlass(){
         viewModelScope.launch {
             _listCocktail.value = cocktailGlass().drinks?: mutableListOf()
@@ -297,8 +343,7 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     fun createUser(onSuccess: () -> Unit){
         viewModelScope.launch {
             try {
-                // DCS - Utiliza el servicio de autenticación de Firebase para registrar al usuario
-                // por email y contraseña
+
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -316,6 +361,10 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
     }
 
 
+    /**
+     * Función que guarda un nuevo cocktail
+     * @param onSuccess función lambda que cuando ejecuta manda un mesaje informativo y nos vuelve a la página anterior.
+     */
     fun saveNewCocktail(onSuccess: () -> Unit) {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -374,6 +423,11 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
             }
     }
 
+
+    /**
+     * Establece el valor de la variable de elección de pantalla de log in o sing in
+     * @param screen recibe un Int que da la elección de pantalla.
+     */
     fun pantallasIncio(screen: Int){
         pantallasI = screen
     }
@@ -415,14 +469,14 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
 
     /**
      * Dependiendo del tipo de cocktail, muestra una información diferente en la cabecera.
-     * @param number trae la información de la pantalla a eligir.
+     * @param number trae la información de la pantalla a eligir de la variable number.
      */
     @Composable
     fun Head(number: Int)
         {
             Column(Modifier.fillMaxWidth().background(color = Color(0xFF45413C)),
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = alochol, fontFamily = jollyLodger, fontSize = 32.sp, color = Color(0xFF00F5D4))
+            Text(text = alcohol, fontFamily = jollyLodger, fontSize = 32.sp, color = Color(0xFF00F5D4))
             //Text(text = cocktail, fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))
                 when (number){
                     1 -> {Text(text = "Glass Cocktail", fontFamily = jollyLodger, fontSize = 24.sp, color = Color(0xFFFF01FB))}
@@ -505,10 +559,16 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         this.password = password
     }
 
+    /**
+     * Actualiza el número para la elección texto de cabecera
+     */
     fun changeScreen(screen: Int) {
         this.number = screen
     }
 
+    /**
+     * Actualiza el nombre del cocktail.
+     */
     fun changeNameCocktail(name:String){
         this.cocktailName = name
     }
@@ -521,27 +581,44 @@ class Viewmodel @Inject constructor(private val nameUseCase: NameUseCase, privat
         this.userName = userName
     }
 
+    /**
+     * Contiene el nombre del cocktail.
+     */
     fun changeCocktail(cocktail: String){
         this.cocktail = cocktail
     }
 
+    /**
+     * Muestra el taxto Alcocholics or Non Alcoholics proveniente de la API
+     */
     fun alcoholicOrno(alcoholic: String){
-        //if(alcoholic.equals("Alcoholic")) this.alochol = "Alcoholic" else this.alochol = " No Alcoholic"
-        this.alochol = alcoholic
+        this.alcohol = alcoholic
     }
 
+    /**
+     * Variable Booleana que permite marca la fila seleccionada.
+     */
     fun lightRow(vista: Boolean){
         _show.value = !vista
     }
 
+    /**
+     * Selecciona el número de fila
+     */
     fun changeSelectedRow(id: String?) {
         _selectedRowId = id
     }
 
+    /**
+     * Ccambia el color cuando la fila es seleccionada
+     */
     fun changeColorRow(row: String?): Color {
-        return if(_selectedRowId == row) Color.Red else Color.White
+        return if(_selectedRowId == row) Color(0xFFFF01FB) else Color.White
     }
 
+    /**
+     * Función que hace un limpiado de la información.
+     */
     fun Clean(){
         alcoholicOrno("")
         changeSelectedRow("")

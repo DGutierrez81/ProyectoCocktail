@@ -5,7 +5,7 @@
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
     "node": "96:1521",
-    "version": "5246159662",
+    "version": "5251649191",
     "component-id": "e47cf343bcc99359cd9db8ccbd361de462e903e7"
   },
   "default": "Home",
@@ -139,9 +139,18 @@
           {
             "id": "top_level",
             "padding": {
-              "top": "17.0",
-              "bottom": "17.0"
+              "top": "48.0",
+              "bottom": "48.0"
             },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
             "children": [
               "Group 6",
               "Logo (4) 1",
@@ -204,7 +213,7 @@
               "Alcoholis",
               "NoAlcoholics"
             ],
-            "item-spacing": "80.0",
+            "item-spacing": "50.0",
             "clip-content": "false"
           },
           {
@@ -531,7 +540,7 @@
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "fixed",
-                "value": "85.0"
+                "value": "118.0"
               },
               "height-constraints": {
                 "sizing-mode": "shrink"
@@ -765,7 +774,7 @@
       "design": "Home",
       "size": {
         "width": 360.0,
-        "height": 610.0
+        "height": 610.1045532226562
       }
     }
   ],

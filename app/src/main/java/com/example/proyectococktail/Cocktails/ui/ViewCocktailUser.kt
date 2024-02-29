@@ -33,48 +33,73 @@ import coil.compose.rememberImagePainter
 import com.example.proyectococktail.Cocktails.Model.Routes
 import com.example.proyectococktail.home.jollyLodger
 
+/**
+ * Este componente representa la pantalla de visualización de cócteles para el usuario.
+ * @param navController el controlador de navegación utilizado para navegar entre pantallas.
+ * @param viewModel el ViewModel que contiene la lógica de negocio y los datos relacionados con la visualización de cócteles.
+ */
 @Composable
 fun ViewConktailUser(navController: NavController, viewModel: Viewmodel) {
+    // Se recopilan los datos de los cócteles desde el ViewModel y se observa su estado.
     val cocktailData by viewModel.cocktailData.collectAsState()
     val show = viewModel.show.value
 
-
-    LaunchedEffect(Unit){
-        viewModel.fetchCoctail()
+    // Se utiliza LaunchedEffect para ejecutar una acción cuando este componente es lanzado.
+    LaunchedEffect(Unit) {
+        viewModel.fetchCoctail() // Se solicitan los datos de los cócteles al ViewModel.
     }
 
-    Scaffold (
+    // Se define la estructura básica de la pantalla utilizando Scaffold, que incluye una barra superior y una barra inferior.
+    Scaffold(
         topBar = {
+            // En la barra superior se muestra la cabecera de la pantalla y la información relacionada con la selección actual.
             Column {
                 Cabecera(navController, viewModel)
                 viewModel.Head(viewModel.number)
             }
         },
-        bottomBar = { Box(
-            Modifier.fillMaxWidth().height(75.dp).background(color = Color(0xFF45413C)),
-            contentAlignment = Alignment.Center) {
-            Text(text = "ViewCocktail", fontFamily = jollyLodger, color = Color(0xFF00F5D4), fontSize = 36.sp, modifier = Modifier.clickable { navController.navigate(
-                Routes.Cards.Route) })
+        bottomBar = {
+            // En la barra inferior se muestra un enlace para ver todos los cócteles disponibles.
+            Box(
+                Modifier.fillMaxWidth().height(75.dp).background(color = Color(0xFF45413C)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "ViewCocktail",
+                    fontFamily = jollyLodger,
+                    color = Color(0xFF00F5D4),
+                    fontSize = 36.sp,
+                    modifier = Modifier.clickable {
+                        // Al hacer clic en el enlace, se navega a la pantalla de visualización de cócteles.
+                        navController.navigate(Routes.Cards.Route)
+                    }
+                )
+            }
         }
-        }
-    ){innerPadding ->
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)
-            .background(color = Color(0xFF45413C))) {
+    ) { innerPadding ->
+        // El contenido principal se muestra dentro de un LazyColumn, que permite desplazamiento vertical y carga perezosa de elementos.
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(color = Color(0xFF45413C))
+        ) {
+            // Se recorren los elementos de la lista de cócteles y se muestran en la pantalla.
             itemsIndexed(cocktailData) { index, item ->
                 Column {
+                    // Cada cóctel se muestra como una fila que incluye una imagen y la lista de ingredientes.
                     Row(
                         modifier = Modifier
                             .height(100.dp)
                             .clickable {
+                                // Al hacer clic en una fila, se ejecuta la lógica para mostrar los detalles del cóctel seleccionado.
                                 viewModel.lightRow(show)
                                 viewModel.SaveCocktail(
                                     idDrink = item.idDrink,
                                     strDrink = item.strDrink,
-                                    strAlcoholic= item.strAlcoholic,
-                                    strInstructions = item.strInstructions,
-                                    strDrinkThumb = item.strDrinkThumb,
+                                    strAlcoholic = item.strAlcoholic,
+                                    strInstructions = item.strInstructions ?: "",
+                                    strDrinkThumb = item.strDrinkThumb ?: "",
                                     strList = item.strList
                                 )
                                 viewModel.IngredientsUserCard(item)
@@ -87,6 +112,7 @@ fun ViewConktailUser(navController: NavController, viewModel: Viewmodel) {
                                 color = viewModel.changeColorRow(item.idDrink)
                             )
                     ) {
+                        // Dentro de la fila, se muestra la imagen del cóctel.
                         Box(
                             modifier = Modifier.width(100.dp)
                         ) {
@@ -98,117 +124,28 @@ fun ViewConktailUser(navController: NavController, viewModel: Viewmodel) {
                                     .clip(RoundedCornerShape(8.dp))
                             )
                         }
+                        // Se muestra la lista de ingredientes del cóctel.
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(100.dp)
-                                .background(viewModel.calculateBackgroundColor(index)) // Establecer el color de fondo del contenedor
+                                .background(viewModel.calculateBackgroundColor(index))
                         ) {
                             Text(
-                                //"Ingredients:\n${item.strIngredient1}, ${item.strIngredient2}, ${item.strIngredient3},${item.strIngredient4}\n${item.strIngredient11}"
                                 text = "Ingredients:\n" + viewModel.IngredientsUser(item),
                                 modifier = Modifier
-                                    .padding(5.dp)
-                                    .fillMaxWidth(),
+                                    .fillMaxWidth()
+                                    .padding(10.dp),
                                 textAlign = TextAlign.Center
                             )
                         }
-
                     }
+                    // Si se debe mostrar una alerta, se activa la lógica correspondiente en el ViewModel.
                     if (viewModel.showAlert) {
-                        /*navController.navigate(Routes.screen4.Route)*/
                         viewModel.lightRow(show)
                     }
                 }
             }
         }
     }
-
-    /*
-        Column(modifier = Modifier.fillMaxSize()) {
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Button(onClick = { viewModel.mostrar() }) {
-                    Text(text = "Pulsa aqui")
-                }
-                Button(onClick = { viewModel.saveNewCocktail { Toast.makeText(context, "Nota guardada OK", Toast.LENGTH_SHORT).show()
-                    navController.popBackStack() } }) {
-                    Text(text = "Add cocktail")
-                }
-            }
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                itemsIndexed(nombre) { index, item -> // Utilizamos itemsIndexed en lugar de items
-
-
-                    //val backgroundColor = if (index % 2 == 0) Color(0xFFF9EBE0) else Color.White // Alternar entre dos colores para las filas impares y pares
-
-                    Column {
-                        Text(
-                            text = item.strDrink ?: "vacio",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp), // Añadir un relleno alrededor del texto para que el color de fondo sea visible
-                            textAlign = TextAlign.Center,
-                            color = Color.Black // Color del texto
-                        )
-                        Row(
-                            modifier = Modifier
-                                .height(100.dp)
-                                .clickable {
-                                    viewModel.lightRow(show)
-                                    viewModel.SaveCocktail(
-                                        idDrink = item.idDrink?: "vacio",
-                                        strDrink = item.strDrink?: "vacio",
-                                        strInstructions = item.strInstructions ?: "vacio",
-                                        strDrinkThumb = item.strDrinkThumb ?: "vacio",
-                                        strList = mutableListOf(
-                                            item.strIngredient1 ?: "vacio", item.strIngredient2 ?: "vacio", item.strIngredient3 ?: "vacio", item.strIngredient4 ?: "vacio", item.strIngredient5 ?: "vacio", item.strIngredient6 ?: "vacio",
-                                            item.strIngredient6 ?: "vacio", item.strIngredient7 ?: "vacio", item.strIngredient8 ?: "vacio", item.strIngredient9 ?: "vacio", item.strIngredient10 ?: "vacio", item.strIngredient12 ?: "vacio",
-                                            item.strIngredient13 ?: "vacio", item.strIngredient14 ?: "vacio", item.strIngredient15 ?: "vacio",
-                                        )
-                                    )
-                                    viewModel.changeSelectedRow(item.idDrink)
-                                }
-                                .border(
-                                    width = 2.dp,
-                                    color = viewModel.changeColorRow(item.idDrink)
-                                )
-                        ) {
-                            Box(
-                                modifier = Modifier.width(100.dp)
-                            ) {
-                                Image(
-                                    painter = rememberImagePainter(item.strDrinkThumb),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .clip(RoundedCornerShape(8.dp))
-                                )
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(100.dp)
-                                    .background(viewModel.calculateBackgroundColor(index)) // Establecer el color de fondo del contenedor
-                            ) {
-                                Text(
-                                    //"Ingredients:\n${item.strIngredient1}, ${item.strIngredient2}, ${item.strIngredient3},${item.strIngredient4}\n${item.strIngredient11}"
-                                    text = "Ingredients:\n" + viewModel.Ingredients(item),
-                                    modifier = Modifier.padding(5.dp).fillMaxWidth(),
-                                    textAlign = TextAlign.Center
-                                )
-                            }
-
-                        }
-                        if (viewModel.showAlert) {
-                            /*navController.navigate(Routes.screen4.Route)*/
-                            viewModel.lightRow(show)
-                        }
-                    }
-                }
-            }
-        }
-
-     */
 }

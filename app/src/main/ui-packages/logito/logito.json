@@ -5,7 +5,7 @@
     "type": "figma",
     "file": "OvtgJRjqKK7dZHFs854c5o",
     "node": "57:150",
-    "version": "5241297920",
+    "version": "5253014021",
     "component-id": "dd485a9e0861730f2ca52fde621055a64ca5b5fb"
   },
   "default": "Logito",
@@ -26,6 +26,7 @@
         "rules": [
           {
             "id": "top_level",
+            "tap-handler": "$on Logito tapped",
             "size-constraints": {
               "width-constraints": {
                 "sizing-mode": "shrink"
@@ -58,6 +59,13 @@
           }
         ]
       }
+    }
+  },
+  "parameters": {
+    "on Logito tapped": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
     }
   },
   "previews": [

@@ -25,9 +25,18 @@ import com.example.proyectococktail.Cocktails.ui.ViewConktailUser
 import com.example.proyectococktail.ui.theme.ProyectoCocktailTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Esta clase representa la actividad principal de la aplicación.
+ * Está anotada con @AndroidEntryPoint para habilitar la inyección de dependencias con Hilt.
+ * Extiende ComponentActivity y se encarga de manejar el ciclo de vida de la actividad.
+ * En su método onCreate, configura el contenido de la actividad y establece el sistema de navegación utilizando Jetpack Compose.
+ * Utiliza un NavController para la navegación entre destinos.
+ * @property viewModel el ViewModel utilizado en la actividad.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: Viewmodel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -38,31 +47,29 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = Routes.principalScreen.Route){
-                        composable(Routes.principalScreen.Route){PrincipalScreen(navController, viewModel)}
-                        composable(Routes.singLog.Route){SingLog(navController, viewModel)}
-                        composable(Routes.cocktails.Route){Cocktails(navController, viewModel)}
-                        composable(Routes.ScreenHome.Route){ScreenHome(navController, viewModel)}
-                        composable(Routes.Cards.Route){Cards(navController, viewModel)}
-                        composable(Routes.ViewConktailUser.Route){ViewConktailUser(navController, viewModel)}
+                    NavHost(
+                        navController = navController,
+                        startDestination = Routes.principalScreen.Route
+                    ) {
+                        composable(Routes.principalScreen.Route) {
+                            PrincipalScreen(
+                                navController,
+                                viewModel
+                            )
+                        }
+                        composable(Routes.singLog.Route) { SingLog(navController, viewModel) }
+                        composable(Routes.cocktails.Route) { Cocktails(navController, viewModel) }
+                        composable(Routes.ScreenHome.Route) { ScreenHome(navController, viewModel) }
+                        composable(Routes.Cards.Route) { Cards(navController, viewModel) }
+                        composable(Routes.ViewConktailUser.Route) {
+                            ViewConktailUser(
+                                navController,
+                                viewModel
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ProyectoCocktailTheme {
-        Greeting("Android")
-    }
-}}

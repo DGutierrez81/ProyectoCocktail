@@ -5,6 +5,9 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Esta interfaz define los métodos para realizar llamadas a la API relacionadas con los cócteles.
+ */
 interface CocktailsView {
     @GET("search.php")
     //suspend fun getCocktail():Response<Cocktail>
